@@ -1,0 +1,3006 @@
+{
+    "context": {
+        "current_datetime": "20251114T095140",
+        "timezone": "Europe/Paris"
+    },
+    "disruptions": [
+        {
+            "application_periods": [
+                {
+                    "begin": "20251113T080400",
+                    "end": "20251113T103700"
+                }
+            ],
+            "cause": "",
+            "contributor": "realtime.sncf.piv",
+            "disruption_id": "ea7a1d58-18dc-4a98-a7d9-c844adc4135c",
+            "disruption_uri": "ea7a1d58-18dc-4a98-a7d9-c844adc4135c",
+            "id": "ea7a1d58-18dc-4a98-a7d9-c844adc4135c",
+            "impact_id": "ea7a1d58-18dc-4a98-a7d9-c844adc4135c",
+            "impacted_objects": [
+                {
+                    "impacted_stops": [
+                        {
+                            "amended_arrival_time": "080400",
+                            "amended_departure_time": "080400",
+                            "arrival_status": "unchanged",
+                            "base_arrival_time": "080400",
+                            "base_departure_time": "080400",
+                            "cause": "",
+                            "departure_status": "unchanged",
+                            "is_detour": false,
+                            "stop_point": {
+                                "coord": {
+                                    "lat": "47.217491",
+                                    "lon": "-1.542077"
+                                },
+                                "equipments": [],
+                                "id": "stop_point:SNCF:87481002:LongDistanceTrain",
+                                "label": "Nantes (Nantes)",
+                                "links": [],
+                                "name": "Nantes"
+                            },
+                            "stop_time_effect": "unchanged"
+                        },
+                        {
+                            "amended_arrival_time": "085100",
+                            "amended_departure_time": "085400",
+                            "arrival_status": "delayed",
+                            "base_arrival_time": "084100",
+                            "base_departure_time": "084400",
+                            "cause": "Panne de signalisation",
+                            "departure_status": "delayed",
+                            "is_detour": false,
+                            "stop_point": {
+                                "coord": {
+                                    "lat": "47.464649",
+                                    "lon": "-0.55677"
+                                },
+                                "equipments": [],
+                                "id": "stop_point:SNCF:87484006:LongDistanceTrain",
+                                "label": "Angers Saint-Laud (Angers)",
+                                "links": [],
+                                "name": "Angers Saint-Laud"
+                            },
+                            "stop_time_effect": "delayed"
+                        },
+                        {
+                            "amended_arrival_time": "093300",
+                            "amended_departure_time": "094100",
+                            "arrival_status": "delayed",
+                            "base_arrival_time": "092300",
+                            "base_departure_time": "092600",
+                            "cause": "Panne de signalisation",
+                            "departure_status": "delayed",
+                            "is_detour": false,
+                            "stop_point": {
+                                "coord": {
+                                    "lat": "47.995615",
+                                    "lon": "0.192614"
+                                },
+                                "equipments": [],
+                                "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+                                "label": "Le Mans (Le Mans)",
+                                "links": [],
+                                "name": "Le Mans"
+                            },
+                            "stop_time_effect": "delayed"
+                        },
+                        {
+                            "amended_arrival_time": "103700",
+                            "amended_departure_time": "103700",
+                            "arrival_status": "delayed",
+                            "base_arrival_time": "102200",
+                            "base_departure_time": "102200",
+                            "cause": "Panne de signalisation",
+                            "departure_status": "unchanged",
+                            "is_detour": false,
+                            "stop_point": {
+                                "coord": {
+                                    "lat": "48.841172",
+                                    "lon": "2.320514"
+                                },
+                                "equipments": [],
+                                "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+                                "label": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+                                "links": [],
+                                "name": "Paris - Montparnasse - Hall 1 & 2"
+                            },
+                            "stop_time_effect": "delayed"
+                        }
+                    ],
+                    "pt_object": {
+                        "embedded_type": "trip",
+                        "id": "SNCF:2025-11-13:8864:1187:LongDistanceTrain",
+                        "name": "SNCF:2025-11-13:8864:1187:LongDistanceTrain",
+                        "quality": 0,
+                        "trip": {
+                            "id": "SNCF:2025-11-13:8864:1187:LongDistanceTrain",
+                            "name": "8864"
+                        }
+                    }
+                }
+            ],
+            "messages": [
+                {
+                    "channel": {
+                        "content_type": "",
+                        "id": "rt",
+                        "name": "rt",
+                        "types": [
+                            "web",
+                            "mobile"
+                        ]
+                    },
+                    "text": "Panne de signalisation"
+                }
+            ],
+            "severity": {
+                "color": "#000000",
+                "effect": "SIGNIFICANT_DELAYS",
+                "name": "trip delayed",
+                "priority": 42
+            },
+            "status": "past",
+            "updated_at": "20251114T070614",
+            "uri": "ea7a1d58-18dc-4a98-a7d9-c844adc4135c"
+        }
+    ],
+    "feed_publishers": [
+        {
+            "id": "sncf",
+            "license": "Private (unspecified)",
+            "name": "SNCF PIV Production",
+            "url": ""
+        },
+        {
+            "id": "SNCF:sncf-piv",
+            "license": "Private (unspecified)",
+            "name": "SNCF PIV Production",
+            "url": ""
+        }
+    ],
+    "links": [
+        {
+            "href": "https://api.sncf.com/v1/coverage/sncf/disruptions/{disruptions.id}",
+            "rel": "disruptions",
+            "templated": true,
+            "type": "disruptions"
+        },
+        {
+            "href": "https://api.sncf.com/v1/coverage/sncf/vehicle_journeys/{vehicle_journeys.id}",
+            "rel": "vehicle_journeys",
+            "templated": true,
+            "type": "vehicle_journeys"
+        },
+        {
+            "href": "https://api.sncf.com/v1/coverage/sncf/journey_patterns/{journey_pattern.id}",
+            "rel": "journey_patterns",
+            "templated": true,
+            "type": "journey_pattern"
+        },
+        {
+            "href": "https://api.sncf.com/v1/coverage/sncf/trips/{trip.id}",
+            "rel": "trips",
+            "templated": true,
+            "type": "trip"
+        },
+        {
+            "href": "https://api.sncf.com/v1/coverage/sncf/stop_points/{stop_point.id}",
+            "rel": "stop_points",
+            "templated": true,
+            "type": "stop_point"
+        },
+        {
+            "href": "https://api.sncf.com/v1/coverage/sncf/disruptions/{disruption.id}",
+            "rel": "disruptions",
+            "templated": true,
+            "type": "disruption"
+        },
+        {
+            "href": "https://api.sncf.com/v1/coverage/sncf/vehicle_journeys?headsign=8864",
+            "templated": false,
+            "type": "first"
+        }
+    ],
+    "origins": [],
+    "pagination": {
+        "items_on_page": 21,
+        "items_per_page": 25,
+        "start_page": 0,
+        "total_result": 21
+    },
+    "terminus": [],
+    "vehicle_journeys": [
+        {
+            "calendars": [
+                {
+                    "active_periods": [
+                        {
+                            "begin": "20251113",
+                            "end": "20251114"
+                        }
+                    ],
+                    "week_pattern": {
+                        "friday": false,
+                        "monday": false,
+                        "saturday": false,
+                        "sunday": false,
+                        "thursday": true,
+                        "tuesday": false,
+                        "wednesday": false
+                    }
+                }
+            ],
+            "codes": [
+                {
+                    "type": "rt_piv",
+                    "value": "2025-11-13:8864:1187:rail:highSpeedRail:FERRE"
+                },
+                {
+                    "type": "source",
+                    "value": "3433a9c8a99919a34c88d5816bb9664b"
+                }
+            ],
+            "disruptions": [
+                {
+                    "id": "ea7a1d58-18dc-4a98-a7d9-c844adc4135c",
+                    "internal": true,
+                    "rel": "disruptions",
+                    "templated": false,
+                    "type": "disruption"
+                }
+            ],
+            "headsign": "8864",
+            "id": "vehicle_journey:SNCF:2025-11-13:8864:1187:LongDistanceTrain",
+            "journey_pattern": {
+                "id": "journey_pattern:6198",
+                "name": "journey_pattern:6198"
+            },
+            "name": "8864",
+            "stop_times": [
+                {
+                    "arrival_time": "080400",
+                    "departure_time": "080400",
+                    "drop_off_allowed": false,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.217491",
+                            "lon": "-1.542077"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87481002:LongDistanceTrain",
+                        "label": "Nantes (Nantes)",
+                        "links": [],
+                        "name": "Nantes"
+                    },
+                    "utc_arrival_time": "070400",
+                    "utc_departure_time": "070400"
+                },
+                {
+                    "arrival_time": "084100",
+                    "departure_time": "084400",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.464649",
+                            "lon": "-0.55677"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87484006:LongDistanceTrain",
+                        "label": "Angers Saint-Laud (Angers)",
+                        "links": [],
+                        "name": "Angers Saint-Laud"
+                    },
+                    "utc_arrival_time": "074100",
+                    "utc_departure_time": "074400"
+                },
+                {
+                    "arrival_time": "092300",
+                    "departure_time": "092600",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.995615",
+                            "lon": "0.192614"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+                        "label": "Le Mans (Le Mans)",
+                        "links": [],
+                        "name": "Le Mans"
+                    },
+                    "utc_arrival_time": "082300",
+                    "utc_departure_time": "082600"
+                },
+                {
+                    "arrival_time": "102200",
+                    "departure_time": "102200",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": false,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "48.841172",
+                            "lon": "2.320514"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+                        "label": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+                        "links": [],
+                        "name": "Paris - Montparnasse - Hall 1 & 2"
+                    },
+                    "utc_arrival_time": "092200",
+                    "utc_departure_time": "092200"
+                }
+            ],
+            "trip": {
+                "id": "SNCF:2025-11-13:8864:1187:LongDistanceTrain",
+                "name": "8864"
+            },
+            "validity_pattern": {
+                "beginning_date": "20251112",
+                "days": "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010"
+            }
+        },
+        {
+            "calendars": [
+                {
+                    "active_periods": [
+                        {
+                            "begin": "20251114",
+                            "end": "20251115"
+                        }
+                    ],
+                    "week_pattern": {
+                        "friday": true,
+                        "monday": false,
+                        "saturday": false,
+                        "sunday": false,
+                        "thursday": false,
+                        "tuesday": false,
+                        "wednesday": false
+                    }
+                }
+            ],
+            "codes": [
+                {
+                    "type": "rt_piv",
+                    "value": "2025-11-14:8864:1187:rail:highSpeedRail:FERRE"
+                },
+                {
+                    "type": "source",
+                    "value": "d8563d155c337f7e31ff72ca358b44e0"
+                }
+            ],
+            "disruptions": [],
+            "headsign": "8864",
+            "id": "vehicle_journey:SNCF:2025-11-14:8864:1187:LongDistanceTrain",
+            "journey_pattern": {
+                "id": "journey_pattern:6198",
+                "name": "journey_pattern:6198"
+            },
+            "name": "8864",
+            "stop_times": [
+                {
+                    "arrival_time": "080400",
+                    "departure_time": "080400",
+                    "drop_off_allowed": false,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.217491",
+                            "lon": "-1.542077"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87481002:LongDistanceTrain",
+                        "label": "Nantes (Nantes)",
+                        "links": [],
+                        "name": "Nantes"
+                    },
+                    "utc_arrival_time": "070400",
+                    "utc_departure_time": "070400"
+                },
+                {
+                    "arrival_time": "084100",
+                    "departure_time": "084400",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.464649",
+                            "lon": "-0.55677"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87484006:LongDistanceTrain",
+                        "label": "Angers Saint-Laud (Angers)",
+                        "links": [],
+                        "name": "Angers Saint-Laud"
+                    },
+                    "utc_arrival_time": "074100",
+                    "utc_departure_time": "074400"
+                },
+                {
+                    "arrival_time": "092300",
+                    "departure_time": "092600",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.995615",
+                            "lon": "0.192614"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+                        "label": "Le Mans (Le Mans)",
+                        "links": [],
+                        "name": "Le Mans"
+                    },
+                    "utc_arrival_time": "082300",
+                    "utc_departure_time": "082600"
+                },
+                {
+                    "arrival_time": "102200",
+                    "departure_time": "102200",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": false,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "48.841172",
+                            "lon": "2.320514"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+                        "label": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+                        "links": [],
+                        "name": "Paris - Montparnasse - Hall 1 & 2"
+                    },
+                    "utc_arrival_time": "092200",
+                    "utc_departure_time": "092200"
+                }
+            ],
+            "trip": {
+                "id": "SNCF:2025-11-14:8864:1187:LongDistanceTrain",
+                "name": "8864"
+            },
+            "validity_pattern": {
+                "beginning_date": "20251112",
+                "days": "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100"
+            }
+        },
+        {
+            "calendars": [
+                {
+                    "active_periods": [
+                        {
+                            "begin": "20251115",
+                            "end": "20251116"
+                        }
+                    ],
+                    "week_pattern": {
+                        "friday": false,
+                        "monday": false,
+                        "saturday": true,
+                        "sunday": false,
+                        "thursday": false,
+                        "tuesday": false,
+                        "wednesday": false
+                    }
+                }
+            ],
+            "codes": [
+                {
+                    "type": "rt_piv",
+                    "value": "2025-11-15:8864:1187:rail:highSpeedRail:FERRE"
+                },
+                {
+                    "type": "source",
+                    "value": "07ed3149a566772eff065117bd8fbac6"
+                }
+            ],
+            "disruptions": [],
+            "headsign": "8864",
+            "id": "vehicle_journey:SNCF:2025-11-15:8864:1187:LongDistanceTrain",
+            "journey_pattern": {
+                "id": "journey_pattern:6198",
+                "name": "journey_pattern:6198"
+            },
+            "name": "8864",
+            "stop_times": [
+                {
+                    "arrival_time": "080400",
+                    "departure_time": "080400",
+                    "drop_off_allowed": false,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.217491",
+                            "lon": "-1.542077"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87481002:LongDistanceTrain",
+                        "label": "Nantes (Nantes)",
+                        "links": [],
+                        "name": "Nantes"
+                    },
+                    "utc_arrival_time": "070400",
+                    "utc_departure_time": "070400"
+                },
+                {
+                    "arrival_time": "084100",
+                    "departure_time": "084400",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.464649",
+                            "lon": "-0.55677"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87484006:LongDistanceTrain",
+                        "label": "Angers Saint-Laud (Angers)",
+                        "links": [],
+                        "name": "Angers Saint-Laud"
+                    },
+                    "utc_arrival_time": "074100",
+                    "utc_departure_time": "074400"
+                },
+                {
+                    "arrival_time": "092300",
+                    "departure_time": "092600",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.995615",
+                            "lon": "0.192614"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+                        "label": "Le Mans (Le Mans)",
+                        "links": [],
+                        "name": "Le Mans"
+                    },
+                    "utc_arrival_time": "082300",
+                    "utc_departure_time": "082600"
+                },
+                {
+                    "arrival_time": "102200",
+                    "departure_time": "102200",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": false,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "48.841172",
+                            "lon": "2.320514"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+                        "label": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+                        "links": [],
+                        "name": "Paris - Montparnasse - Hall 1 & 2"
+                    },
+                    "utc_arrival_time": "092200",
+                    "utc_departure_time": "092200"
+                }
+            ],
+            "trip": {
+                "id": "SNCF:2025-11-15:8864:1187:LongDistanceTrain",
+                "name": "8864"
+            },
+            "validity_pattern": {
+                "beginning_date": "20251112",
+                "days": "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000"
+            }
+        },
+        {
+            "calendars": [
+                {
+                    "active_periods": [
+                        {
+                            "begin": "20251117",
+                            "end": "20251118"
+                        }
+                    ],
+                    "week_pattern": {
+                        "friday": false,
+                        "monday": true,
+                        "saturday": false,
+                        "sunday": false,
+                        "thursday": false,
+                        "tuesday": false,
+                        "wednesday": false
+                    }
+                }
+            ],
+            "codes": [
+                {
+                    "type": "rt_piv",
+                    "value": "2025-11-17:8864:1187:rail:highSpeedRail:FERRE"
+                },
+                {
+                    "type": "source",
+                    "value": "3282f5e37509097dfc88af76e52a89e4"
+                }
+            ],
+            "disruptions": [],
+            "headsign": "8864",
+            "id": "vehicle_journey:SNCF:2025-11-17:8864:1187:LongDistanceTrain",
+            "journey_pattern": {
+                "id": "journey_pattern:6198",
+                "name": "journey_pattern:6198"
+            },
+            "name": "8864",
+            "stop_times": [
+                {
+                    "arrival_time": "080400",
+                    "departure_time": "080400",
+                    "drop_off_allowed": false,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.217491",
+                            "lon": "-1.542077"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87481002:LongDistanceTrain",
+                        "label": "Nantes (Nantes)",
+                        "links": [],
+                        "name": "Nantes"
+                    },
+                    "utc_arrival_time": "070400",
+                    "utc_departure_time": "070400"
+                },
+                {
+                    "arrival_time": "084100",
+                    "departure_time": "084400",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.464649",
+                            "lon": "-0.55677"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87484006:LongDistanceTrain",
+                        "label": "Angers Saint-Laud (Angers)",
+                        "links": [],
+                        "name": "Angers Saint-Laud"
+                    },
+                    "utc_arrival_time": "074100",
+                    "utc_departure_time": "074400"
+                },
+                {
+                    "arrival_time": "092300",
+                    "departure_time": "092600",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.995615",
+                            "lon": "0.192614"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+                        "label": "Le Mans (Le Mans)",
+                        "links": [],
+                        "name": "Le Mans"
+                    },
+                    "utc_arrival_time": "082300",
+                    "utc_departure_time": "082600"
+                },
+                {
+                    "arrival_time": "102200",
+                    "departure_time": "102200",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": false,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "48.841172",
+                            "lon": "2.320514"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+                        "label": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+                        "links": [],
+                        "name": "Paris - Montparnasse - Hall 1 & 2"
+                    },
+                    "utc_arrival_time": "092200",
+                    "utc_departure_time": "092200"
+                }
+            ],
+            "trip": {
+                "id": "SNCF:2025-11-17:8864:1187:LongDistanceTrain",
+                "name": "8864"
+            },
+            "validity_pattern": {
+                "beginning_date": "20251112",
+                "days": "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000"
+            }
+        },
+        {
+            "calendars": [
+                {
+                    "active_periods": [
+                        {
+                            "begin": "20251118",
+                            "end": "20251119"
+                        }
+                    ],
+                    "week_pattern": {
+                        "friday": false,
+                        "monday": false,
+                        "saturday": false,
+                        "sunday": false,
+                        "thursday": false,
+                        "tuesday": true,
+                        "wednesday": false
+                    }
+                }
+            ],
+            "codes": [
+                {
+                    "type": "rt_piv",
+                    "value": "2025-11-18:8864:1187:rail:highSpeedRail:FERRE"
+                },
+                {
+                    "type": "source",
+                    "value": "95fdbe0bc792511836ea1c913cb01ebb"
+                }
+            ],
+            "disruptions": [],
+            "headsign": "8864",
+            "id": "vehicle_journey:SNCF:2025-11-18:8864:1187:LongDistanceTrain",
+            "journey_pattern": {
+                "id": "journey_pattern:6198",
+                "name": "journey_pattern:6198"
+            },
+            "name": "8864",
+            "stop_times": [
+                {
+                    "arrival_time": "080400",
+                    "departure_time": "080400",
+                    "drop_off_allowed": false,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.217491",
+                            "lon": "-1.542077"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87481002:LongDistanceTrain",
+                        "label": "Nantes (Nantes)",
+                        "links": [],
+                        "name": "Nantes"
+                    },
+                    "utc_arrival_time": "070400",
+                    "utc_departure_time": "070400"
+                },
+                {
+                    "arrival_time": "084100",
+                    "departure_time": "084400",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.464649",
+                            "lon": "-0.55677"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87484006:LongDistanceTrain",
+                        "label": "Angers Saint-Laud (Angers)",
+                        "links": [],
+                        "name": "Angers Saint-Laud"
+                    },
+                    "utc_arrival_time": "074100",
+                    "utc_departure_time": "074400"
+                },
+                {
+                    "arrival_time": "092300",
+                    "departure_time": "092600",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.995615",
+                            "lon": "0.192614"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+                        "label": "Le Mans (Le Mans)",
+                        "links": [],
+                        "name": "Le Mans"
+                    },
+                    "utc_arrival_time": "082300",
+                    "utc_departure_time": "082600"
+                },
+                {
+                    "arrival_time": "102200",
+                    "departure_time": "102200",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": false,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "48.841172",
+                            "lon": "2.320514"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+                        "label": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+                        "links": [],
+                        "name": "Paris - Montparnasse - Hall 1 & 2"
+                    },
+                    "utc_arrival_time": "092200",
+                    "utc_departure_time": "092200"
+                }
+            ],
+            "trip": {
+                "id": "SNCF:2025-11-18:8864:1187:LongDistanceTrain",
+                "name": "8864"
+            },
+            "validity_pattern": {
+                "beginning_date": "20251112",
+                "days": "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000"
+            }
+        },
+        {
+            "calendars": [
+                {
+                    "active_periods": [
+                        {
+                            "begin": "20251119",
+                            "end": "20251120"
+                        }
+                    ],
+                    "week_pattern": {
+                        "friday": false,
+                        "monday": false,
+                        "saturday": false,
+                        "sunday": false,
+                        "thursday": false,
+                        "tuesday": false,
+                        "wednesday": true
+                    }
+                }
+            ],
+            "codes": [
+                {
+                    "type": "rt_piv",
+                    "value": "2025-11-19:8864:1187:rail:highSpeedRail:FERRE"
+                },
+                {
+                    "type": "source",
+                    "value": "198319a32e5f7f2dc16734e45ae00eb1"
+                }
+            ],
+            "disruptions": [],
+            "headsign": "8864",
+            "id": "vehicle_journey:SNCF:2025-11-19:8864:1187:LongDistanceTrain",
+            "journey_pattern": {
+                "id": "journey_pattern:6198",
+                "name": "journey_pattern:6198"
+            },
+            "name": "8864",
+            "stop_times": [
+                {
+                    "arrival_time": "080400",
+                    "departure_time": "080400",
+                    "drop_off_allowed": false,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.217491",
+                            "lon": "-1.542077"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87481002:LongDistanceTrain",
+                        "label": "Nantes (Nantes)",
+                        "links": [],
+                        "name": "Nantes"
+                    },
+                    "utc_arrival_time": "070400",
+                    "utc_departure_time": "070400"
+                },
+                {
+                    "arrival_time": "084100",
+                    "departure_time": "084400",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.464649",
+                            "lon": "-0.55677"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87484006:LongDistanceTrain",
+                        "label": "Angers Saint-Laud (Angers)",
+                        "links": [],
+                        "name": "Angers Saint-Laud"
+                    },
+                    "utc_arrival_time": "074100",
+                    "utc_departure_time": "074400"
+                },
+                {
+                    "arrival_time": "092300",
+                    "departure_time": "092600",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.995615",
+                            "lon": "0.192614"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+                        "label": "Le Mans (Le Mans)",
+                        "links": [],
+                        "name": "Le Mans"
+                    },
+                    "utc_arrival_time": "082300",
+                    "utc_departure_time": "082600"
+                },
+                {
+                    "arrival_time": "102200",
+                    "departure_time": "102200",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": false,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "48.841172",
+                            "lon": "2.320514"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+                        "label": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+                        "links": [],
+                        "name": "Paris - Montparnasse - Hall 1 & 2"
+                    },
+                    "utc_arrival_time": "092200",
+                    "utc_departure_time": "092200"
+                }
+            ],
+            "trip": {
+                "id": "SNCF:2025-11-19:8864:1187:LongDistanceTrain",
+                "name": "8864"
+            },
+            "validity_pattern": {
+                "beginning_date": "20251112",
+                "days": "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000"
+            }
+        },
+        {
+            "calendars": [
+                {
+                    "active_periods": [
+                        {
+                            "begin": "20251120",
+                            "end": "20251121"
+                        }
+                    ],
+                    "week_pattern": {
+                        "friday": false,
+                        "monday": false,
+                        "saturday": false,
+                        "sunday": false,
+                        "thursday": true,
+                        "tuesday": false,
+                        "wednesday": false
+                    }
+                }
+            ],
+            "codes": [
+                {
+                    "type": "rt_piv",
+                    "value": "2025-11-20:8864:1187:rail:highSpeedRail:FERRE"
+                },
+                {
+                    "type": "source",
+                    "value": "c14e9dc5b4771ac3eef089dc9b3fa12e"
+                }
+            ],
+            "disruptions": [],
+            "headsign": "8864",
+            "id": "vehicle_journey:SNCF:2025-11-20:8864:1187:LongDistanceTrain",
+            "journey_pattern": {
+                "id": "journey_pattern:6198",
+                "name": "journey_pattern:6198"
+            },
+            "name": "8864",
+            "stop_times": [
+                {
+                    "arrival_time": "080400",
+                    "departure_time": "080400",
+                    "drop_off_allowed": false,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.217491",
+                            "lon": "-1.542077"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87481002:LongDistanceTrain",
+                        "label": "Nantes (Nantes)",
+                        "links": [],
+                        "name": "Nantes"
+                    },
+                    "utc_arrival_time": "070400",
+                    "utc_departure_time": "070400"
+                },
+                {
+                    "arrival_time": "084100",
+                    "departure_time": "084400",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.464649",
+                            "lon": "-0.55677"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87484006:LongDistanceTrain",
+                        "label": "Angers Saint-Laud (Angers)",
+                        "links": [],
+                        "name": "Angers Saint-Laud"
+                    },
+                    "utc_arrival_time": "074100",
+                    "utc_departure_time": "074400"
+                },
+                {
+                    "arrival_time": "092300",
+                    "departure_time": "092600",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.995615",
+                            "lon": "0.192614"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+                        "label": "Le Mans (Le Mans)",
+                        "links": [],
+                        "name": "Le Mans"
+                    },
+                    "utc_arrival_time": "082300",
+                    "utc_departure_time": "082600"
+                },
+                {
+                    "arrival_time": "102200",
+                    "departure_time": "102200",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": false,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "48.841172",
+                            "lon": "2.320514"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+                        "label": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+                        "links": [],
+                        "name": "Paris - Montparnasse - Hall 1 & 2"
+                    },
+                    "utc_arrival_time": "092200",
+                    "utc_departure_time": "092200"
+                }
+            ],
+            "trip": {
+                "id": "SNCF:2025-11-20:8864:1187:LongDistanceTrain",
+                "name": "8864"
+            },
+            "validity_pattern": {
+                "beginning_date": "20251112",
+                "days": "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000"
+            }
+        },
+        {
+            "calendars": [
+                {
+                    "active_periods": [
+                        {
+                            "begin": "20251121",
+                            "end": "20251122"
+                        }
+                    ],
+                    "week_pattern": {
+                        "friday": true,
+                        "monday": false,
+                        "saturday": false,
+                        "sunday": false,
+                        "thursday": false,
+                        "tuesday": false,
+                        "wednesday": false
+                    }
+                }
+            ],
+            "codes": [
+                {
+                    "type": "rt_piv",
+                    "value": "2025-11-21:8864:1187:rail:highSpeedRail:FERRE"
+                },
+                {
+                    "type": "source",
+                    "value": "91b788c312bd07f265cb184203b6f74d"
+                }
+            ],
+            "disruptions": [],
+            "headsign": "8864",
+            "id": "vehicle_journey:SNCF:2025-11-21:8864:1187:LongDistanceTrain",
+            "journey_pattern": {
+                "id": "journey_pattern:6198",
+                "name": "journey_pattern:6198"
+            },
+            "name": "8864",
+            "stop_times": [
+                {
+                    "arrival_time": "080400",
+                    "departure_time": "080400",
+                    "drop_off_allowed": false,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.217491",
+                            "lon": "-1.542077"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87481002:LongDistanceTrain",
+                        "label": "Nantes (Nantes)",
+                        "links": [],
+                        "name": "Nantes"
+                    },
+                    "utc_arrival_time": "070400",
+                    "utc_departure_time": "070400"
+                },
+                {
+                    "arrival_time": "084100",
+                    "departure_time": "084400",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.464649",
+                            "lon": "-0.55677"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87484006:LongDistanceTrain",
+                        "label": "Angers Saint-Laud (Angers)",
+                        "links": [],
+                        "name": "Angers Saint-Laud"
+                    },
+                    "utc_arrival_time": "074100",
+                    "utc_departure_time": "074400"
+                },
+                {
+                    "arrival_time": "092300",
+                    "departure_time": "092600",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.995615",
+                            "lon": "0.192614"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+                        "label": "Le Mans (Le Mans)",
+                        "links": [],
+                        "name": "Le Mans"
+                    },
+                    "utc_arrival_time": "082300",
+                    "utc_departure_time": "082600"
+                },
+                {
+                    "arrival_time": "102200",
+                    "departure_time": "102200",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": false,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "48.841172",
+                            "lon": "2.320514"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+                        "label": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+                        "links": [],
+                        "name": "Paris - Montparnasse - Hall 1 & 2"
+                    },
+                    "utc_arrival_time": "092200",
+                    "utc_departure_time": "092200"
+                }
+            ],
+            "trip": {
+                "id": "SNCF:2025-11-21:8864:1187:LongDistanceTrain",
+                "name": "8864"
+            },
+            "validity_pattern": {
+                "beginning_date": "20251112",
+                "days": "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000"
+            }
+        },
+        {
+            "calendars": [
+                {
+                    "active_periods": [
+                        {
+                            "begin": "20251122",
+                            "end": "20251123"
+                        }
+                    ],
+                    "week_pattern": {
+                        "friday": false,
+                        "monday": false,
+                        "saturday": true,
+                        "sunday": false,
+                        "thursday": false,
+                        "tuesday": false,
+                        "wednesday": false
+                    }
+                }
+            ],
+            "codes": [
+                {
+                    "type": "rt_piv",
+                    "value": "2025-11-22:8864:1187:rail:highSpeedRail:FERRE"
+                },
+                {
+                    "type": "source",
+                    "value": "c3ba98e5b8a75a58a5150c2d4ae90db4"
+                }
+            ],
+            "disruptions": [],
+            "headsign": "8864",
+            "id": "vehicle_journey:SNCF:2025-11-22:8864:1187:LongDistanceTrain",
+            "journey_pattern": {
+                "id": "journey_pattern:6198",
+                "name": "journey_pattern:6198"
+            },
+            "name": "8864",
+            "stop_times": [
+                {
+                    "arrival_time": "080400",
+                    "departure_time": "080400",
+                    "drop_off_allowed": false,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.217491",
+                            "lon": "-1.542077"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87481002:LongDistanceTrain",
+                        "label": "Nantes (Nantes)",
+                        "links": [],
+                        "name": "Nantes"
+                    },
+                    "utc_arrival_time": "070400",
+                    "utc_departure_time": "070400"
+                },
+                {
+                    "arrival_time": "084100",
+                    "departure_time": "084400",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.464649",
+                            "lon": "-0.55677"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87484006:LongDistanceTrain",
+                        "label": "Angers Saint-Laud (Angers)",
+                        "links": [],
+                        "name": "Angers Saint-Laud"
+                    },
+                    "utc_arrival_time": "074100",
+                    "utc_departure_time": "074400"
+                },
+                {
+                    "arrival_time": "092300",
+                    "departure_time": "092600",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.995615",
+                            "lon": "0.192614"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+                        "label": "Le Mans (Le Mans)",
+                        "links": [],
+                        "name": "Le Mans"
+                    },
+                    "utc_arrival_time": "082300",
+                    "utc_departure_time": "082600"
+                },
+                {
+                    "arrival_time": "102200",
+                    "departure_time": "102200",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": false,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "48.841172",
+                            "lon": "2.320514"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+                        "label": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+                        "links": [],
+                        "name": "Paris - Montparnasse - Hall 1 & 2"
+                    },
+                    "utc_arrival_time": "092200",
+                    "utc_departure_time": "092200"
+                }
+            ],
+            "trip": {
+                "id": "SNCF:2025-11-22:8864:1187:LongDistanceTrain",
+                "name": "8864"
+            },
+            "validity_pattern": {
+                "beginning_date": "20251112",
+                "days": "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000"
+            }
+        },
+        {
+            "calendars": [
+                {
+                    "active_periods": [
+                        {
+                            "begin": "20251124",
+                            "end": "20251125"
+                        }
+                    ],
+                    "week_pattern": {
+                        "friday": false,
+                        "monday": true,
+                        "saturday": false,
+                        "sunday": false,
+                        "thursday": false,
+                        "tuesday": false,
+                        "wednesday": false
+                    }
+                }
+            ],
+            "codes": [
+                {
+                    "type": "rt_piv",
+                    "value": "2025-11-24:8864:1187:rail:highSpeedRail:FERRE"
+                },
+                {
+                    "type": "source",
+                    "value": "b81f8e58b14bbfdf995528a2acef8852"
+                }
+            ],
+            "disruptions": [],
+            "headsign": "8864",
+            "id": "vehicle_journey:SNCF:2025-11-24:8864:1187:LongDistanceTrain",
+            "journey_pattern": {
+                "id": "journey_pattern:6198",
+                "name": "journey_pattern:6198"
+            },
+            "name": "8864",
+            "stop_times": [
+                {
+                    "arrival_time": "080400",
+                    "departure_time": "080400",
+                    "drop_off_allowed": false,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.217491",
+                            "lon": "-1.542077"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87481002:LongDistanceTrain",
+                        "label": "Nantes (Nantes)",
+                        "links": [],
+                        "name": "Nantes"
+                    },
+                    "utc_arrival_time": "070400",
+                    "utc_departure_time": "070400"
+                },
+                {
+                    "arrival_time": "084100",
+                    "departure_time": "084400",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.464649",
+                            "lon": "-0.55677"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87484006:LongDistanceTrain",
+                        "label": "Angers Saint-Laud (Angers)",
+                        "links": [],
+                        "name": "Angers Saint-Laud"
+                    },
+                    "utc_arrival_time": "074100",
+                    "utc_departure_time": "074400"
+                },
+                {
+                    "arrival_time": "092300",
+                    "departure_time": "092600",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.995615",
+                            "lon": "0.192614"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+                        "label": "Le Mans (Le Mans)",
+                        "links": [],
+                        "name": "Le Mans"
+                    },
+                    "utc_arrival_time": "082300",
+                    "utc_departure_time": "082600"
+                },
+                {
+                    "arrival_time": "102200",
+                    "departure_time": "102200",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": false,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "48.841172",
+                            "lon": "2.320514"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+                        "label": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+                        "links": [],
+                        "name": "Paris - Montparnasse - Hall 1 & 2"
+                    },
+                    "utc_arrival_time": "092200",
+                    "utc_departure_time": "092200"
+                }
+            ],
+            "trip": {
+                "id": "SNCF:2025-11-24:8864:1187:LongDistanceTrain",
+                "name": "8864"
+            },
+            "validity_pattern": {
+                "beginning_date": "20251112",
+                "days": "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000"
+            }
+        },
+        {
+            "calendars": [
+                {
+                    "active_periods": [
+                        {
+                            "begin": "20251125",
+                            "end": "20251126"
+                        }
+                    ],
+                    "week_pattern": {
+                        "friday": false,
+                        "monday": false,
+                        "saturday": false,
+                        "sunday": false,
+                        "thursday": false,
+                        "tuesday": true,
+                        "wednesday": false
+                    }
+                }
+            ],
+            "codes": [
+                {
+                    "type": "rt_piv",
+                    "value": "2025-11-25:8864:1187:rail:highSpeedRail:FERRE"
+                },
+                {
+                    "type": "source",
+                    "value": "5bbe0677cc5abb76b6eb8457ddcf748f"
+                }
+            ],
+            "disruptions": [],
+            "headsign": "8864",
+            "id": "vehicle_journey:SNCF:2025-11-25:8864:1187:LongDistanceTrain",
+            "journey_pattern": {
+                "id": "journey_pattern:6198",
+                "name": "journey_pattern:6198"
+            },
+            "name": "8864",
+            "stop_times": [
+                {
+                    "arrival_time": "080400",
+                    "departure_time": "080400",
+                    "drop_off_allowed": false,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.217491",
+                            "lon": "-1.542077"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87481002:LongDistanceTrain",
+                        "label": "Nantes (Nantes)",
+                        "links": [],
+                        "name": "Nantes"
+                    },
+                    "utc_arrival_time": "070400",
+                    "utc_departure_time": "070400"
+                },
+                {
+                    "arrival_time": "084100",
+                    "departure_time": "084400",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.464649",
+                            "lon": "-0.55677"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87484006:LongDistanceTrain",
+                        "label": "Angers Saint-Laud (Angers)",
+                        "links": [],
+                        "name": "Angers Saint-Laud"
+                    },
+                    "utc_arrival_time": "074100",
+                    "utc_departure_time": "074400"
+                },
+                {
+                    "arrival_time": "092300",
+                    "departure_time": "092600",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.995615",
+                            "lon": "0.192614"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+                        "label": "Le Mans (Le Mans)",
+                        "links": [],
+                        "name": "Le Mans"
+                    },
+                    "utc_arrival_time": "082300",
+                    "utc_departure_time": "082600"
+                },
+                {
+                    "arrival_time": "102200",
+                    "departure_time": "102200",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": false,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "48.841172",
+                            "lon": "2.320514"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+                        "label": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+                        "links": [],
+                        "name": "Paris - Montparnasse - Hall 1 & 2"
+                    },
+                    "utc_arrival_time": "092200",
+                    "utc_departure_time": "092200"
+                }
+            ],
+            "trip": {
+                "id": "SNCF:2025-11-25:8864:1187:LongDistanceTrain",
+                "name": "8864"
+            },
+            "validity_pattern": {
+                "beginning_date": "20251112",
+                "days": "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000"
+            }
+        },
+        {
+            "calendars": [
+                {
+                    "active_periods": [
+                        {
+                            "begin": "20251126",
+                            "end": "20251127"
+                        }
+                    ],
+                    "week_pattern": {
+                        "friday": false,
+                        "monday": false,
+                        "saturday": false,
+                        "sunday": false,
+                        "thursday": false,
+                        "tuesday": false,
+                        "wednesday": true
+                    }
+                }
+            ],
+            "codes": [
+                {
+                    "type": "rt_piv",
+                    "value": "2025-11-26:8864:1187:rail:highSpeedRail:FERRE"
+                },
+                {
+                    "type": "source",
+                    "value": "73a1c2424dfa50d1d2d1191194d8d9d1"
+                }
+            ],
+            "disruptions": [],
+            "headsign": "8864",
+            "id": "vehicle_journey:SNCF:2025-11-26:8864:1187:LongDistanceTrain",
+            "journey_pattern": {
+                "id": "journey_pattern:6198",
+                "name": "journey_pattern:6198"
+            },
+            "name": "8864",
+            "stop_times": [
+                {
+                    "arrival_time": "080400",
+                    "departure_time": "080400",
+                    "drop_off_allowed": false,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.217491",
+                            "lon": "-1.542077"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87481002:LongDistanceTrain",
+                        "label": "Nantes (Nantes)",
+                        "links": [],
+                        "name": "Nantes"
+                    },
+                    "utc_arrival_time": "070400",
+                    "utc_departure_time": "070400"
+                },
+                {
+                    "arrival_time": "084100",
+                    "departure_time": "084400",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.464649",
+                            "lon": "-0.55677"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87484006:LongDistanceTrain",
+                        "label": "Angers Saint-Laud (Angers)",
+                        "links": [],
+                        "name": "Angers Saint-Laud"
+                    },
+                    "utc_arrival_time": "074100",
+                    "utc_departure_time": "074400"
+                },
+                {
+                    "arrival_time": "092300",
+                    "departure_time": "092600",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.995615",
+                            "lon": "0.192614"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+                        "label": "Le Mans (Le Mans)",
+                        "links": [],
+                        "name": "Le Mans"
+                    },
+                    "utc_arrival_time": "082300",
+                    "utc_departure_time": "082600"
+                },
+                {
+                    "arrival_time": "102200",
+                    "departure_time": "102200",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": false,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "48.841172",
+                            "lon": "2.320514"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+                        "label": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+                        "links": [],
+                        "name": "Paris - Montparnasse - Hall 1 & 2"
+                    },
+                    "utc_arrival_time": "092200",
+                    "utc_departure_time": "092200"
+                }
+            ],
+            "trip": {
+                "id": "SNCF:2025-11-26:8864:1187:LongDistanceTrain",
+                "name": "8864"
+            },
+            "validity_pattern": {
+                "beginning_date": "20251112",
+                "days": "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000"
+            }
+        },
+        {
+            "calendars": [
+                {
+                    "active_periods": [
+                        {
+                            "begin": "20251127",
+                            "end": "20251128"
+                        }
+                    ],
+                    "week_pattern": {
+                        "friday": false,
+                        "monday": false,
+                        "saturday": false,
+                        "sunday": false,
+                        "thursday": true,
+                        "tuesday": false,
+                        "wednesday": false
+                    }
+                }
+            ],
+            "codes": [
+                {
+                    "type": "rt_piv",
+                    "value": "2025-11-27:8864:1187:rail:highSpeedRail:FERRE"
+                },
+                {
+                    "type": "source",
+                    "value": "051c11dc3f718c755d18fe8d19abc034"
+                }
+            ],
+            "disruptions": [],
+            "headsign": "8864",
+            "id": "vehicle_journey:SNCF:2025-11-27:8864:1187:LongDistanceTrain",
+            "journey_pattern": {
+                "id": "journey_pattern:6198",
+                "name": "journey_pattern:6198"
+            },
+            "name": "8864",
+            "stop_times": [
+                {
+                    "arrival_time": "080400",
+                    "departure_time": "080400",
+                    "drop_off_allowed": false,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.217491",
+                            "lon": "-1.542077"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87481002:LongDistanceTrain",
+                        "label": "Nantes (Nantes)",
+                        "links": [],
+                        "name": "Nantes"
+                    },
+                    "utc_arrival_time": "070400",
+                    "utc_departure_time": "070400"
+                },
+                {
+                    "arrival_time": "084100",
+                    "departure_time": "084400",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.464649",
+                            "lon": "-0.55677"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87484006:LongDistanceTrain",
+                        "label": "Angers Saint-Laud (Angers)",
+                        "links": [],
+                        "name": "Angers Saint-Laud"
+                    },
+                    "utc_arrival_time": "074100",
+                    "utc_departure_time": "074400"
+                },
+                {
+                    "arrival_time": "092300",
+                    "departure_time": "092600",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.995615",
+                            "lon": "0.192614"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+                        "label": "Le Mans (Le Mans)",
+                        "links": [],
+                        "name": "Le Mans"
+                    },
+                    "utc_arrival_time": "082300",
+                    "utc_departure_time": "082600"
+                },
+                {
+                    "arrival_time": "102200",
+                    "departure_time": "102200",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": false,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "48.841172",
+                            "lon": "2.320514"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+                        "label": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+                        "links": [],
+                        "name": "Paris - Montparnasse - Hall 1 & 2"
+                    },
+                    "utc_arrival_time": "092200",
+                    "utc_departure_time": "092200"
+                }
+            ],
+            "trip": {
+                "id": "SNCF:2025-11-27:8864:1187:LongDistanceTrain",
+                "name": "8864"
+            },
+            "validity_pattern": {
+                "beginning_date": "20251112",
+                "days": "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000"
+            }
+        },
+        {
+            "calendars": [
+                {
+                    "active_periods": [
+                        {
+                            "begin": "20251128",
+                            "end": "20251129"
+                        }
+                    ],
+                    "week_pattern": {
+                        "friday": true,
+                        "monday": false,
+                        "saturday": false,
+                        "sunday": false,
+                        "thursday": false,
+                        "tuesday": false,
+                        "wednesday": false
+                    }
+                }
+            ],
+            "codes": [
+                {
+                    "type": "rt_piv",
+                    "value": "2025-11-28:8864:1187:rail:highSpeedRail:FERRE"
+                },
+                {
+                    "type": "source",
+                    "value": "db4ea4fa6da2660af3aa0f0a828230f6"
+                }
+            ],
+            "disruptions": [],
+            "headsign": "8864",
+            "id": "vehicle_journey:SNCF:2025-11-28:8864:1187:LongDistanceTrain",
+            "journey_pattern": {
+                "id": "journey_pattern:6198",
+                "name": "journey_pattern:6198"
+            },
+            "name": "8864",
+            "stop_times": [
+                {
+                    "arrival_time": "080800",
+                    "departure_time": "080800",
+                    "drop_off_allowed": false,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.217491",
+                            "lon": "-1.542077"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87481002:LongDistanceTrain",
+                        "label": "Nantes (Nantes)",
+                        "links": [],
+                        "name": "Nantes"
+                    },
+                    "utc_arrival_time": "070800",
+                    "utc_departure_time": "070800"
+                },
+                {
+                    "arrival_time": "084500",
+                    "departure_time": "084800",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.464649",
+                            "lon": "-0.55677"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87484006:LongDistanceTrain",
+                        "label": "Angers Saint-Laud (Angers)",
+                        "links": [],
+                        "name": "Angers Saint-Laud"
+                    },
+                    "utc_arrival_time": "074500",
+                    "utc_departure_time": "074800"
+                },
+                {
+                    "arrival_time": "093800",
+                    "departure_time": "094300",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.995615",
+                            "lon": "0.192614"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+                        "label": "Le Mans (Le Mans)",
+                        "links": [],
+                        "name": "Le Mans"
+                    },
+                    "utc_arrival_time": "083800",
+                    "utc_departure_time": "084300"
+                },
+                {
+                    "arrival_time": "103800",
+                    "departure_time": "103800",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": false,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "48.841172",
+                            "lon": "2.320514"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+                        "label": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+                        "links": [],
+                        "name": "Paris - Montparnasse - Hall 1 & 2"
+                    },
+                    "utc_arrival_time": "093800",
+                    "utc_departure_time": "093800"
+                }
+            ],
+            "trip": {
+                "id": "SNCF:2025-11-28:8864:1187:LongDistanceTrain",
+                "name": "8864"
+            },
+            "validity_pattern": {
+                "beginning_date": "20251112",
+                "days": "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000"
+            }
+        },
+        {
+            "calendars": [
+                {
+                    "active_periods": [
+                        {
+                            "begin": "20251129",
+                            "end": "20251130"
+                        }
+                    ],
+                    "week_pattern": {
+                        "friday": false,
+                        "monday": false,
+                        "saturday": true,
+                        "sunday": false,
+                        "thursday": false,
+                        "tuesday": false,
+                        "wednesday": false
+                    }
+                }
+            ],
+            "codes": [
+                {
+                    "type": "rt_piv",
+                    "value": "2025-11-29:8864:1187:rail:highSpeedRail:FERRE"
+                },
+                {
+                    "type": "source",
+                    "value": "b4e62e2f840aed5f76dae3cc575817bf"
+                }
+            ],
+            "disruptions": [],
+            "headsign": "8864",
+            "id": "vehicle_journey:SNCF:2025-11-29:8864:1187:LongDistanceTrain",
+            "journey_pattern": {
+                "id": "journey_pattern:6198",
+                "name": "journey_pattern:6198"
+            },
+            "name": "8864",
+            "stop_times": [
+                {
+                    "arrival_time": "080400",
+                    "departure_time": "080400",
+                    "drop_off_allowed": false,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.217491",
+                            "lon": "-1.542077"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87481002:LongDistanceTrain",
+                        "label": "Nantes (Nantes)",
+                        "links": [],
+                        "name": "Nantes"
+                    },
+                    "utc_arrival_time": "070400",
+                    "utc_departure_time": "070400"
+                },
+                {
+                    "arrival_time": "084100",
+                    "departure_time": "084400",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.464649",
+                            "lon": "-0.55677"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87484006:LongDistanceTrain",
+                        "label": "Angers Saint-Laud (Angers)",
+                        "links": [],
+                        "name": "Angers Saint-Laud"
+                    },
+                    "utc_arrival_time": "074100",
+                    "utc_departure_time": "074400"
+                },
+                {
+                    "arrival_time": "092300",
+                    "departure_time": "092600",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.995615",
+                            "lon": "0.192614"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+                        "label": "Le Mans (Le Mans)",
+                        "links": [],
+                        "name": "Le Mans"
+                    },
+                    "utc_arrival_time": "082300",
+                    "utc_departure_time": "082600"
+                },
+                {
+                    "arrival_time": "102200",
+                    "departure_time": "102200",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": false,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "48.841172",
+                            "lon": "2.320514"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+                        "label": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+                        "links": [],
+                        "name": "Paris - Montparnasse - Hall 1 & 2"
+                    },
+                    "utc_arrival_time": "092200",
+                    "utc_departure_time": "092200"
+                }
+            ],
+            "trip": {
+                "id": "SNCF:2025-11-29:8864:1187:LongDistanceTrain",
+                "name": "8864"
+            },
+            "validity_pattern": {
+                "beginning_date": "20251112",
+                "days": "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000"
+            }
+        },
+        {
+            "calendars": [
+                {
+                    "active_periods": [
+                        {
+                            "begin": "20251201",
+                            "end": "20251202"
+                        }
+                    ],
+                    "week_pattern": {
+                        "friday": false,
+                        "monday": true,
+                        "saturday": false,
+                        "sunday": false,
+                        "thursday": false,
+                        "tuesday": false,
+                        "wednesday": false
+                    }
+                }
+            ],
+            "codes": [
+                {
+                    "type": "rt_piv",
+                    "value": "2025-12-01:8864:1187:rail:highSpeedRail:FERRE"
+                },
+                {
+                    "type": "source",
+                    "value": "4669c278773f766e1f4a095b376383f3"
+                }
+            ],
+            "disruptions": [],
+            "headsign": "8864",
+            "id": "vehicle_journey:SNCF:2025-12-01:8864:1187:LongDistanceTrain",
+            "journey_pattern": {
+                "id": "journey_pattern:6198",
+                "name": "journey_pattern:6198"
+            },
+            "name": "8864",
+            "stop_times": [
+                {
+                    "arrival_time": "080800",
+                    "departure_time": "080800",
+                    "drop_off_allowed": false,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.217491",
+                            "lon": "-1.542077"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87481002:LongDistanceTrain",
+                        "label": "Nantes (Nantes)",
+                        "links": [],
+                        "name": "Nantes"
+                    },
+                    "utc_arrival_time": "070800",
+                    "utc_departure_time": "070800"
+                },
+                {
+                    "arrival_time": "084500",
+                    "departure_time": "084800",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.464649",
+                            "lon": "-0.55677"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87484006:LongDistanceTrain",
+                        "label": "Angers Saint-Laud (Angers)",
+                        "links": [],
+                        "name": "Angers Saint-Laud"
+                    },
+                    "utc_arrival_time": "074500",
+                    "utc_departure_time": "074800"
+                },
+                {
+                    "arrival_time": "093800",
+                    "departure_time": "094300",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.995615",
+                            "lon": "0.192614"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+                        "label": "Le Mans (Le Mans)",
+                        "links": [],
+                        "name": "Le Mans"
+                    },
+                    "utc_arrival_time": "083800",
+                    "utc_departure_time": "084300"
+                },
+                {
+                    "arrival_time": "103800",
+                    "departure_time": "103800",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": false,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "48.841172",
+                            "lon": "2.320514"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+                        "label": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+                        "links": [],
+                        "name": "Paris - Montparnasse - Hall 1 & 2"
+                    },
+                    "utc_arrival_time": "093800",
+                    "utc_departure_time": "093800"
+                }
+            ],
+            "trip": {
+                "id": "SNCF:2025-12-01:8864:1187:LongDistanceTrain",
+                "name": "8864"
+            },
+            "validity_pattern": {
+                "beginning_date": "20251112",
+                "days": "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000"
+            }
+        },
+        {
+            "calendars": [
+                {
+                    "active_periods": [
+                        {
+                            "begin": "20251202",
+                            "end": "20251203"
+                        }
+                    ],
+                    "week_pattern": {
+                        "friday": false,
+                        "monday": false,
+                        "saturday": false,
+                        "sunday": false,
+                        "thursday": false,
+                        "tuesday": true,
+                        "wednesday": false
+                    }
+                }
+            ],
+            "codes": [
+                {
+                    "type": "rt_piv",
+                    "value": "2025-12-02:8864:1187:rail:highSpeedRail:FERRE"
+                },
+                {
+                    "type": "source",
+                    "value": "6a5e36cc78f00a9ce443ea3dac611610"
+                }
+            ],
+            "disruptions": [],
+            "headsign": "8864",
+            "id": "vehicle_journey:SNCF:2025-12-02:8864:1187:LongDistanceTrain",
+            "journey_pattern": {
+                "id": "journey_pattern:6198",
+                "name": "journey_pattern:6198"
+            },
+            "name": "8864",
+            "stop_times": [
+                {
+                    "arrival_time": "080400",
+                    "departure_time": "080400",
+                    "drop_off_allowed": false,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.217491",
+                            "lon": "-1.542077"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87481002:LongDistanceTrain",
+                        "label": "Nantes (Nantes)",
+                        "links": [],
+                        "name": "Nantes"
+                    },
+                    "utc_arrival_time": "070400",
+                    "utc_departure_time": "070400"
+                },
+                {
+                    "arrival_time": "084100",
+                    "departure_time": "084400",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.464649",
+                            "lon": "-0.55677"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87484006:LongDistanceTrain",
+                        "label": "Angers Saint-Laud (Angers)",
+                        "links": [],
+                        "name": "Angers Saint-Laud"
+                    },
+                    "utc_arrival_time": "074100",
+                    "utc_departure_time": "074400"
+                },
+                {
+                    "arrival_time": "092300",
+                    "departure_time": "092600",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.995615",
+                            "lon": "0.192614"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+                        "label": "Le Mans (Le Mans)",
+                        "links": [],
+                        "name": "Le Mans"
+                    },
+                    "utc_arrival_time": "082300",
+                    "utc_departure_time": "082600"
+                },
+                {
+                    "arrival_time": "102200",
+                    "departure_time": "102200",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": false,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "48.841172",
+                            "lon": "2.320514"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+                        "label": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+                        "links": [],
+                        "name": "Paris - Montparnasse - Hall 1 & 2"
+                    },
+                    "utc_arrival_time": "092200",
+                    "utc_departure_time": "092200"
+                }
+            ],
+            "trip": {
+                "id": "SNCF:2025-12-02:8864:1187:LongDistanceTrain",
+                "name": "8864"
+            },
+            "validity_pattern": {
+                "beginning_date": "20251112",
+                "days": "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000"
+            }
+        },
+        {
+            "calendars": [
+                {
+                    "active_periods": [
+                        {
+                            "begin": "20251203",
+                            "end": "20251204"
+                        }
+                    ],
+                    "week_pattern": {
+                        "friday": false,
+                        "monday": false,
+                        "saturday": false,
+                        "sunday": false,
+                        "thursday": false,
+                        "tuesday": false,
+                        "wednesday": true
+                    }
+                }
+            ],
+            "codes": [
+                {
+                    "type": "rt_piv",
+                    "value": "2025-12-03:8864:1187:rail:highSpeedRail:FERRE"
+                },
+                {
+                    "type": "source",
+                    "value": "9b9d986266823f63ac69f9b3338cf8a8"
+                }
+            ],
+            "disruptions": [],
+            "headsign": "8864",
+            "id": "vehicle_journey:SNCF:2025-12-03:8864:1187:LongDistanceTrain",
+            "journey_pattern": {
+                "id": "journey_pattern:6198",
+                "name": "journey_pattern:6198"
+            },
+            "name": "8864",
+            "stop_times": [
+                {
+                    "arrival_time": "080400",
+                    "departure_time": "080400",
+                    "drop_off_allowed": false,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.217491",
+                            "lon": "-1.542077"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87481002:LongDistanceTrain",
+                        "label": "Nantes (Nantes)",
+                        "links": [],
+                        "name": "Nantes"
+                    },
+                    "utc_arrival_time": "070400",
+                    "utc_departure_time": "070400"
+                },
+                {
+                    "arrival_time": "084100",
+                    "departure_time": "084400",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.464649",
+                            "lon": "-0.55677"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87484006:LongDistanceTrain",
+                        "label": "Angers Saint-Laud (Angers)",
+                        "links": [],
+                        "name": "Angers Saint-Laud"
+                    },
+                    "utc_arrival_time": "074100",
+                    "utc_departure_time": "074400"
+                },
+                {
+                    "arrival_time": "092300",
+                    "departure_time": "092600",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.995615",
+                            "lon": "0.192614"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+                        "label": "Le Mans (Le Mans)",
+                        "links": [],
+                        "name": "Le Mans"
+                    },
+                    "utc_arrival_time": "082300",
+                    "utc_departure_time": "082600"
+                },
+                {
+                    "arrival_time": "102200",
+                    "departure_time": "102200",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": false,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "48.841172",
+                            "lon": "2.320514"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+                        "label": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+                        "links": [],
+                        "name": "Paris - Montparnasse - Hall 1 & 2"
+                    },
+                    "utc_arrival_time": "092200",
+                    "utc_departure_time": "092200"
+                }
+            ],
+            "trip": {
+                "id": "SNCF:2025-12-03:8864:1187:LongDistanceTrain",
+                "name": "8864"
+            },
+            "validity_pattern": {
+                "beginning_date": "20251112",
+                "days": "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000"
+            }
+        },
+        {
+            "calendars": [
+                {
+                    "active_periods": [
+                        {
+                            "begin": "20251204",
+                            "end": "20251205"
+                        }
+                    ],
+                    "week_pattern": {
+                        "friday": false,
+                        "monday": false,
+                        "saturday": false,
+                        "sunday": false,
+                        "thursday": true,
+                        "tuesday": false,
+                        "wednesday": false
+                    }
+                }
+            ],
+            "codes": [
+                {
+                    "type": "rt_piv",
+                    "value": "2025-12-04:8864:1187:rail:highSpeedRail:FERRE"
+                },
+                {
+                    "type": "source",
+                    "value": "4205071bafbdd4129caf3424abb398d0"
+                }
+            ],
+            "disruptions": [],
+            "headsign": "8864",
+            "id": "vehicle_journey:SNCF:2025-12-04:8864:1187:LongDistanceTrain",
+            "journey_pattern": {
+                "id": "journey_pattern:6198",
+                "name": "journey_pattern:6198"
+            },
+            "name": "8864",
+            "stop_times": [
+                {
+                    "arrival_time": "080400",
+                    "departure_time": "080400",
+                    "drop_off_allowed": false,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.217491",
+                            "lon": "-1.542077"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87481002:LongDistanceTrain",
+                        "label": "Nantes (Nantes)",
+                        "links": [],
+                        "name": "Nantes"
+                    },
+                    "utc_arrival_time": "070400",
+                    "utc_departure_time": "070400"
+                },
+                {
+                    "arrival_time": "084100",
+                    "departure_time": "084400",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.464649",
+                            "lon": "-0.55677"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87484006:LongDistanceTrain",
+                        "label": "Angers Saint-Laud (Angers)",
+                        "links": [],
+                        "name": "Angers Saint-Laud"
+                    },
+                    "utc_arrival_time": "074100",
+                    "utc_departure_time": "074400"
+                },
+                {
+                    "arrival_time": "092300",
+                    "departure_time": "092600",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.995615",
+                            "lon": "0.192614"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+                        "label": "Le Mans (Le Mans)",
+                        "links": [],
+                        "name": "Le Mans"
+                    },
+                    "utc_arrival_time": "082300",
+                    "utc_departure_time": "082600"
+                },
+                {
+                    "arrival_time": "102200",
+                    "departure_time": "102200",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": false,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "48.841172",
+                            "lon": "2.320514"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+                        "label": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+                        "links": [],
+                        "name": "Paris - Montparnasse - Hall 1 & 2"
+                    },
+                    "utc_arrival_time": "092200",
+                    "utc_departure_time": "092200"
+                }
+            ],
+            "trip": {
+                "id": "SNCF:2025-12-04:8864:1187:LongDistanceTrain",
+                "name": "8864"
+            },
+            "validity_pattern": {
+                "beginning_date": "20251112",
+                "days": "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000"
+            }
+        },
+        {
+            "calendars": [
+                {
+                    "active_periods": [
+                        {
+                            "begin": "20251205",
+                            "end": "20251206"
+                        }
+                    ],
+                    "week_pattern": {
+                        "friday": true,
+                        "monday": false,
+                        "saturday": false,
+                        "sunday": false,
+                        "thursday": false,
+                        "tuesday": false,
+                        "wednesday": false
+                    }
+                }
+            ],
+            "codes": [
+                {
+                    "type": "rt_piv",
+                    "value": "2025-12-05:8864:1187:rail:highSpeedRail:FERRE"
+                },
+                {
+                    "type": "source",
+                    "value": "03938ed5da6b5dca301180ea39a3ab38"
+                }
+            ],
+            "disruptions": [],
+            "headsign": "8864",
+            "id": "vehicle_journey:SNCF:2025-12-05:8864:1187:LongDistanceTrain",
+            "journey_pattern": {
+                "id": "journey_pattern:6198",
+                "name": "journey_pattern:6198"
+            },
+            "name": "8864",
+            "stop_times": [
+                {
+                    "arrival_time": "080800",
+                    "departure_time": "080800",
+                    "drop_off_allowed": false,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.217491",
+                            "lon": "-1.542077"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87481002:LongDistanceTrain",
+                        "label": "Nantes (Nantes)",
+                        "links": [],
+                        "name": "Nantes"
+                    },
+                    "utc_arrival_time": "070800",
+                    "utc_departure_time": "070800"
+                },
+                {
+                    "arrival_time": "084500",
+                    "departure_time": "084800",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.464649",
+                            "lon": "-0.55677"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87484006:LongDistanceTrain",
+                        "label": "Angers Saint-Laud (Angers)",
+                        "links": [],
+                        "name": "Angers Saint-Laud"
+                    },
+                    "utc_arrival_time": "074500",
+                    "utc_departure_time": "074800"
+                },
+                {
+                    "arrival_time": "093800",
+                    "departure_time": "094300",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.995615",
+                            "lon": "0.192614"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+                        "label": "Le Mans (Le Mans)",
+                        "links": [],
+                        "name": "Le Mans"
+                    },
+                    "utc_arrival_time": "083800",
+                    "utc_departure_time": "084300"
+                },
+                {
+                    "arrival_time": "103800",
+                    "departure_time": "103800",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": false,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "48.841172",
+                            "lon": "2.320514"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+                        "label": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+                        "links": [],
+                        "name": "Paris - Montparnasse - Hall 1 & 2"
+                    },
+                    "utc_arrival_time": "093800",
+                    "utc_departure_time": "093800"
+                }
+            ],
+            "trip": {
+                "id": "SNCF:2025-12-05:8864:1187:LongDistanceTrain",
+                "name": "8864"
+            },
+            "validity_pattern": {
+                "beginning_date": "20251112",
+                "days": "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000"
+            }
+        },
+        {
+            "codes": [
+                {
+                    "type": "rt_piv",
+                    "value": "2025-11-13:8864:1187:rail:highSpeedRail:FERRE"
+                },
+                {
+                    "type": "source",
+                    "value": "3433a9c8a99919a34c88d5816bb9664b"
+                }
+            ],
+            "disruptions": [
+                {
+                    "id": "ea7a1d58-18dc-4a98-a7d9-c844adc4135c",
+                    "internal": true,
+                    "rel": "disruptions",
+                    "templated": false,
+                    "type": "disruption"
+                }
+            ],
+            "headsign": "8864",
+            "id": "vehicle_journey:SNCF:2025-11-13:8864:1187:LongDistanceTrain:RealTime:253ba25c-59f8-483a-ab07-380d4062610a",
+            "journey_pattern": {
+                "id": "journey_pattern:6211",
+                "name": "journey_pattern:6211"
+            },
+            "name": "8864",
+            "stop_times": [
+                {
+                    "arrival_time": "080400",
+                    "departure_time": "080400",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.217491",
+                            "lon": "-1.542077"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87481002:LongDistanceTrain",
+                        "label": "Nantes (Nantes)",
+                        "links": [],
+                        "name": "Nantes"
+                    },
+                    "utc_arrival_time": "070400",
+                    "utc_departure_time": "070400"
+                },
+                {
+                    "arrival_time": "085100",
+                    "departure_time": "085400",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.464649",
+                            "lon": "-0.55677"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87484006:LongDistanceTrain",
+                        "label": "Angers Saint-Laud (Angers)",
+                        "links": [],
+                        "name": "Angers Saint-Laud"
+                    },
+                    "utc_arrival_time": "075100",
+                    "utc_departure_time": "075400"
+                },
+                {
+                    "arrival_time": "093300",
+                    "departure_time": "094100",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "47.995615",
+                            "lon": "0.192614"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+                        "label": "Le Mans (Le Mans)",
+                        "links": [],
+                        "name": "Le Mans"
+                    },
+                    "utc_arrival_time": "083300",
+                    "utc_departure_time": "084100"
+                },
+                {
+                    "arrival_time": "103700",
+                    "departure_time": "103700",
+                    "drop_off_allowed": true,
+                    "headsign": "8864",
+                    "pickup_allowed": true,
+                    "skipped_stop": false,
+                    "stop_point": {
+                        "coord": {
+                            "lat": "48.841172",
+                            "lon": "2.320514"
+                        },
+                        "equipments": [],
+                        "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+                        "label": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+                        "links": [],
+                        "name": "Paris - Montparnasse - Hall 1 & 2"
+                    },
+                    "utc_arrival_time": "093700",
+                    "utc_departure_time": "093700"
+                }
+            ],
+            "trip": {
+                "id": "SNCF:2025-11-13:8864:1187:LongDistanceTrain",
+                "name": "8864"
+            },
+            "validity_pattern": {
+                "beginning_date": "20251112",
+                "days": "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+            }
+        }
+    ]
+}
