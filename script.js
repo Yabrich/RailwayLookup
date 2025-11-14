@@ -169,6 +169,13 @@ function renderMap(stops) {
     )
     .map((coord) => [coord.lat, coord.lon]);
 
+  if (typeof L === "undefined") {
+    mapContainer.classList.add("map--empty");
+    mapContainer.innerHTML =
+      "<p>La librairie cartographique n'a pas pu être chargée. Vérifiez votre connexion réseau puis réessayez.</p>";
+    return;
+  }
+
   if (coords.length === 0) {
     mapContainer.classList.add("map--empty");
     mapContainer.innerHTML =
