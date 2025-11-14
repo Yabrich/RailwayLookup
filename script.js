@@ -49,22 +49,15 @@ if (!data.vehicle_journeys || data.vehicle_journeys.length === 0) {
 const vj = data.vehicle_journeys[0];
 console.log(data)
 
-const headsign = vj.headsign || numero;
-const route =
-    vj.route && vj.route.name ? vj.route.name : "Ligne inconnue";
-const commercialMode =
-    vj.commercial_mode && vj.commercial_mode.name
-    ? vj.commercial_mode.name
-    : "Mode inconnu";
+const headsign = vj.headsign;
+let commercialMode = vj.id ? vj.id.slice(vj.id.lastIndexOf(":")+1,vj.id.length) : "Type inconnu";
+commercialMode = commercialMode == "LongDistanceTrain" ? "TGV ou Intercité" : "TER";
 
 const stops = (vj.stop_times || []).map((st) => {
-    const stopName =
-    st.stop_point && st.stop_point.name
-        ? st.stop_point.name
-        : "Gare inconnue";
+    const stopName = st.stop_point.name ? st.stop_point.name : "Gare inconnue";
 
-    const depart = st.departure_time || "";
-    const arrivee = st.arrival_time || "";
+    let depart = st.departure_time.slice(0,2) + "h" + st.departure_time.slice(2,4) || "";
+    let arrivee = st.arrival_time.slice(0,2) + "h" + st.arrival_time.slice(2,4) || "";
 
     return {
     name: stopName,
@@ -76,10 +69,9 @@ const stops = (vj.stop_times || []).map((st) => {
 let html = `
     <div class="train-info">
     <p>
-        <span class="tag">Train ${headsign}</span>
+        <span class="tag">Train n°${headsign}</span>
         <span class="tag">${commercialMode}</span>
     </p>
-    <p><strong>Ligne :</strong> ${route}</p>
 `;
 
 if (stops.length > 0) {
