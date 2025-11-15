@@ -63,7 +63,7 @@ function afficherResultats(numero, data) {
     const modeSegment = vj.id.split(":").pop();
     if (modeSegment === "LongDistanceTrain") {
       commercialMode = "TGV ou Intercité";
-    } else if (modeSegment === "RegionalTrain") {
+    } else if (modeSegment === "Train") {
       commercialMode = "TER";
     } else if (modeSegment) {
       commercialMode = modeSegment;
@@ -76,11 +76,13 @@ function afficherResultats(numero, data) {
 
     const arrivalRaw = st.arrival_time;
     const departureRaw = st.departure_time;
+    const stopdurationRaw = (parseInt(departureRaw)-parseInt(arrivalRaw))%4000;
 
     return {
       name: stopPoint.name || "Gare inconnue",
       arrival: formatHoraire(arrivalRaw),
       departure: formatHoraire(departureRaw),
+      stopduration: formatDuration(stopdurationRaw),
       coord:
         coord && coord.lat && coord.lon
           ? {
@@ -101,41 +103,61 @@ function afficherResultats(numero, data) {
 
   if (stops.length > 0) {
     html += `
-      <div class="visualizations">
-        <div class="map-container">
-          <h3>Trajet sur la carte</h3>
-          <div id="map" class="map"></div>
-        </div>
-        <div class="timeline-container">
-          <h3>Parcours du train</h3>
-          <div id="timeline" class="timeline"></div>
-        </div>
-      </div>
       <h3>Gares desservies</h3>
       <table>
         <thead>
           <tr>
             <th>Gare</th>
             <th>Arrivée</th>
+            <th>Temps d'arrêt</th>
             <th>Départ</th>
           </tr>
         </thead>
         <tbody>
     `;
 
+    let i = 0;
     for (const stop of stops) {
       html += `
           <tr>
-            <td>${stop.name}</td>
-            <td>${stop.arrival}</td>
+            <td>${stop.name}</td>`;
+      
+      if(i == 0){
+        html += `
+            <td></td>
+            <td></td>
             <td>${stop.departure}</td>
-          </tr>
-      `;
+        `
+      }
+
+      else if(i == stops.length-1){
+        html += `
+            <td>${stop.arrival}</td>
+            <td></td>
+            <td></td>
+        `
+      }
+
+      else{
+        html += `
+            <td>${stop.arrival}</td>
+            <td>${stop.stopduration}</td>
+            <td>${stop.departure}</td>
+        `
+      }
+
+      i += 1;
     }
 
     html += `
         </tbody>
       </table>
+      <div class="visualizations">
+        <div class="map-container">
+          <h3>Trajet sur la carte</h3>
+          <div id="map" class="map"></div>
+        </div>
+      </div>
     `;
   } else {
     html += "<p>Aucun arrêt trouvé dans les données.</p>";
@@ -147,7 +169,6 @@ function afficherResultats(numero, data) {
 
   if (stops.length > 0) {
     renderMap(stops);
-    renderTimeline(stops);
   }
 }
 
@@ -231,43 +252,6 @@ function renderMap(stops) {
   routeMap.fitBounds(line.getBounds(), { padding: [40, 40] });
 }
 
-function renderTimeline(stops) {
-  const timelineEl = document.getElementById("timeline");
-  if (!timelineEl) {
-    return;
-  }
-
-  timelineEl.innerHTML = "";
-
-  stops.forEach((stop, index) => {
-    const stopEl = document.createElement("div");
-    stopEl.className = "timeline-stop";
-
-    const nodeEl = document.createElement("div");
-    nodeEl.className = "timeline-node";
-    if (index === 0) {
-      nodeEl.classList.add("origin");
-    } else if (index === stops.length - 1) {
-      nodeEl.classList.add("terminus");
-    }
-
-    const labelEl = document.createElement("div");
-    labelEl.className = "timeline-label";
-    labelEl.textContent = stop.name;
-
-    const timesEl = document.createElement("div");
-    timesEl.className = "timeline-times";
-    const timesText = formatTimesForTimeline(stop);
-    timesEl.innerHTML = timesText || "&nbsp;";
-
-    stopEl.appendChild(nodeEl);
-    stopEl.appendChild(labelEl);
-    stopEl.appendChild(timesEl);
-
-    timelineEl.appendChild(stopEl);
-  });
-}
-
 function formatHoraire(value) {
   if (!value || value.length < 4) {
     return "";
@@ -278,23 +262,10 @@ function formatHoraire(value) {
   return `${hours}h${minutes}`;
 }
 
-function formatTimesForTimeline(stop) {
-  const hasArrival = Boolean(stop.arrival);
-  const hasDeparture = Boolean(stop.departure);
+function formatDuration(value){
+  const minutes = value/100;
 
-  if (hasArrival && hasDeparture && stop.arrival !== stop.departure) {
-    return `Arrivée : ${stop.arrival}<br />Départ : ${stop.departure}`;
-  }
-
-  if (hasArrival) {
-    return `Arrivée : ${stop.arrival}`;
-  }
-
-  if (hasDeparture) {
-    return `Départ : ${stop.departure}`;
-  }
-
-  return "";
+  return `${minutes} min`;
 }
 
 function formatTimesForPopup(stop) {
