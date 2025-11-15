@@ -134,17 +134,105 @@ th {
     margin: 0;
 }
 
+:root {
+  --dot-size: 22px;
+  --line-height: 6px;
+}
+
+/* Conteneur global */
+.timeline {
+  margin: 2rem 0;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+/* Ligne + stations */
+.timeline-inner {
+  position: relative;
+  display: flex;
+  align-items: flex-start;   /* les dots en haut */
+  /* surtout PAS de gap ici */
+  min-width: max-content;
+  padding: 2rem 0 0.5rem;
+}
+
+/* Une station */
+.timeline-stop {
+  position: relative;
+  flex: 1 1 0;
+  text-align: center;
+  padding: 0 2.5rem;         /* espace horizontal entre les stations */
+  z-index: 1;
+}
+
+/* Segment gauche (vers la station précédente) */
+.timeline-stop::before {
+  content: "";
+  position: absolute;
+  top: calc(var(--dot-size) / 2 - var(--line-height) / 2);
+  left: 0;
+  right: 50%;
+  height: var(--line-height);
+  background: #6b21a8;
+  z-index: -1;
+}
+
+/* Segment droit (vers la station suivante) */
+.timeline-stop::after {
+  content: "";
+  position: absolute;
+  top: calc(var(--dot-size) / 2 - var(--line-height) / 2);
+  left: 50%;
+  right: 0;
+  height: var(--line-height);
+  background: #6b21a8;
+  z-index: -1;
+}
+
+/* On coupe avant la 1re et après la dernière */
+.timeline-stop:first-child::before {
+  content: none;
+}
+.timeline-stop:last-child::after {
+  content: none;
+}
+
+/* Pastille */
+.timeline-stop-dot {
+  width: var(--dot-size);
+  height: var(--dot-size);
+  margin: 0 auto 0.75rem;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 4px solid #6b21a8;
+}
+
+/* Départ / Arrivée */
+.timeline-stop--start .timeline-stop-dot,
+.timeline-stop--end .timeline-stop-dot {
+  border-color: #dc2626;
+}
+
+/* Nom de la gare */
+.timeline-stop-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Horaires */
+.timeline-stop-time {
+  font-size: 0.75rem;
+  color: #4b5563;
+  line-height: 1.2;
+}
+
+
+
+
+
 @media (max-width: 640px) {
     form {
         flex-direction: column;
-    }
-
-    .timeline {
-        gap: 1rem;
-        padding: 1rem;
-    }
-
-    .timeline-stop {
-        min-width: 120px;
     }
 }

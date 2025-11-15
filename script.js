@@ -21,7 +21,7 @@ form.addEventListener("submit", async (event) => {
 
   try {
     const res = await fetch(
-      `http://localhost:3000/api/train?numero=${encodeURIComponent(numero)}`
+      `https://getapisncf-apisncf.up.railway.app/api/train?numero=${encodeURIComponent(numero)}`
     );
 
     if (!res.ok) {
@@ -77,7 +77,9 @@ function afficherResultats(numero, data) {
     const arrivalRaw = st.arrival_time;
     const departureRaw = st.departure_time;
     const stopdurationRaw = (parseInt(departureRaw)-parseInt(arrivalRaw))%4000;
+    
 
+   
     return {
       name: stopPoint.name || "Gare inconnue",
       arrival: formatHoraire(arrivalRaw),
@@ -93,16 +95,24 @@ function afficherResultats(numero, data) {
     };
   });
 
+  const travelTimeRaw = diffHHMMSS(vj.stop_times[0].departure_time, vj.stop_times[vj.stop_times.length-1].arrival_time);
+  const travelTime = travelTimeRaw.hours + "h et " + travelTimeRaw.minutes + "min" 
+
+
   let html = `
     <div class="train-info">
       <p>
         <span class="tag">Train n°${headsign}</span>
         <span class="tag">${commercialMode}</span>
+        <span class="tag">${travelTime} de trajet</span>
       </p>
   `;
 
   if (stops.length > 0) {
     html += `
+      <h3>Itinéraire</h3>
+      <div id="timeline" class="timeline"></div>
+
       <h3>Gares desservies</h3>
       <table>
         <thead>
@@ -169,6 +179,7 @@ function afficherResultats(numero, data) {
 
   if (stops.length > 0) {
     renderMap(stops);
+    renderTimeline(stops);
   }
 }
 
@@ -252,6 +263,41 @@ function renderMap(stops) {
   routeMap.fitBounds(line.getBounds(), { padding: [40, 40] });
 }
 
+function renderTimeline(stops) {
+  const timeline = document.getElementById("timeline");
+  if (!timeline) return;
+
+  const content = `
+    <div class="timeline-inner">
+      ${stops
+        .map((stop, index) => {
+          const isFirst = index === 0;
+          const isLast = index === stops.length - 1;
+
+          let timeInfo = "";
+          if (isFirst) {
+            timeInfo = stop.departure ? `Départ<br>${stop.departure}` : "";
+          } else if (isLast) {
+            timeInfo = stop.arrival ? `Arrivée<br>${stop.arrival}` : "";
+          } else {
+            timeInfo = `${stop.arrival || ""}<br>${stop.departure || ""}`;
+          }
+
+          return `
+            <div class="timeline-stop ${isFirst ? "timeline-stop--start" : ""} ${isLast ? "timeline-stop--end" : ""}">
+              <div class="timeline-stop-dot"></div>
+              <div class="timeline-stop-name">${stop.name}</div>
+              <div class="timeline-stop-time">${timeInfo}</div>
+            </div>
+          `;
+        })
+        .join("")}
+    </div>
+  `;
+
+  timeline.innerHTML = content;
+}
+
 function formatHoraire(value) {
   if (!value || value.length < 4) {
     return "";
@@ -280,4 +326,24 @@ function formatTimesForPopup(stop) {
   }
 
   return parts.join("<br />") || "Horaires non disponibles";
+}
+
+function parseHHMMSS(str) {
+  const h = parseInt(str.slice(0, 2), 10);
+  const m = parseInt(str.slice(2, 4), 10);
+  const s = parseInt(str.slice(4, 6), 10);
+  return h * 3600 + m * 60 + s;
+}
+
+function diffHHMMSS(start, end) {
+  const t1 = parseHHMMSS(start);
+  const t2 = parseHHMMSS(end);
+
+  const diff = t2 - t1;
+
+  const hours = Math.floor(diff / 3600);
+  const minutes = Math.floor((diff % 3600) / 60);
+  const seconds = diff % 60;
+
+  return { hours, minutes, seconds };
 }
