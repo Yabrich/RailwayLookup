@@ -1,4 +1,4 @@
-/* ---------- Layout global ---------- */
+/* ---------- Layout global (allégé) ---------- */
 
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -17,14 +17,14 @@ body {
   max-width: 960px;
   width: 100%;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.97);
+  background: #ffffff;
   border-radius: 18px;
   padding: 1.8rem 2.2rem 2rem;
   box-shadow:
-    0 18px 45px rgba(15, 23, 42, 0.35),
-    0 0 0 1px rgba(15, 23, 42, 0.05);
-  backdrop-filter: blur(16px);
-  animation: cardIn 0.5s ease-out both;
+    0 10px 24px rgba(15, 23, 42, 0.22),
+    0 0 0 1px rgba(15, 23, 42, 0.04);
+  /* ❌ pas de blur, animation d'entrée plus légère */
+  animation: cardIn 0.25s ease-out both;
 }
 
 /* ---------- Header / Hero ---------- */
@@ -46,8 +46,8 @@ body {
   background: radial-gradient(circle at 30% 20%, #f97316, #c026d3);
   font-size: 1.6rem;
   color: #f9fafb;
-  box-shadow: 0 10px 25px rgba(148, 27, 186, 0.35);
-  animation: float 3s ease-in-out infinite;
+  box-shadow: 0 8px 18px rgba(148, 27, 186, 0.3);
+  /* ❌ pas d'animation infinie */
 }
 
 h1 {
@@ -79,18 +79,16 @@ input[type="text"] {
   border: 1px solid #d1d5db;
   background: #f9fafb;
   transition:
-    border-color 0.18s ease,
-    box-shadow 0.18s ease,
-    background 0.18s ease,
-    transform 0.08s ease;
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
 }
 
 input[type="text"]:focus {
   outline: none;
   border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
   background: #ffffff;
-  transform: translateY(-1px);
 }
 
 button {
@@ -106,11 +104,11 @@ button {
   align-items: center;
   justify-content: center;
   gap: 0.35rem;
-  box-shadow: 0 12px 25px rgba(37, 99, 235, 0.45);
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.4);
   transition:
-    transform 0.12s ease,
-    box-shadow 0.12s ease,
-    filter 0.12s ease;
+    transform 0.1s ease,
+    box-shadow 0.1s ease,
+    filter 0.1s ease;
 }
 
 button span::after {
@@ -120,14 +118,14 @@ button span::after {
 }
 
 button:hover:not(:disabled) {
-  transform: translateY(-1px) scale(1.01);
-  box-shadow: 0 16px 30px rgba(37, 99, 235, 0.55);
-  filter: brightness(1.05);
+  transform: translateY(-1px);
+  box-shadow: 0 11px 22px rgba(37, 99, 235, 0.45);
+  filter: brightness(1.03);
 }
 
 button:active:not(:disabled) {
   transform: translateY(0);
-  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.45);
+  box-shadow: 0 7px 14px rgba(37, 99, 235, 0.38);
 }
 
 button:disabled {
@@ -148,7 +146,7 @@ button:disabled {
   gap: 0.4rem;
 }
 
-/* Spinner de chargement */
+/* Spinner de chargement (seul truc animé en continu, mais très léger) */
 .status--loading::before {
   content: "";
   width: 14px;
@@ -161,11 +159,10 @@ button:disabled {
 
 .status--error {
   color: #b91c1c;
-  animation: shake 0.2s ease-out 0s 2;
 }
 
 .status--error::before {
-  content: "😕";
+  content: "⚠️";
 }
 
 /* ---------- Résultat global ---------- */
@@ -181,9 +178,9 @@ button:disabled {
   margin-top: 0.5rem;
 }
 
-/* Animation d'entrée du bloc résultat */
+/* Animation d'entrée */
 .train-info--enter {
-  animation: fadeInUp 0.4s ease-out both;
+  animation: fadeInUp 0.5s ease-out both;
 }
 
 /* Tags d’info train */
@@ -197,14 +194,6 @@ button:disabled {
   margin-right: 0.35rem;
   margin-bottom: 0.25rem;
   font-weight: 500;
-  animation: chipIn 0.35s ease-out both;
-}
-
-.tag:nth-child(2) {
-  animation-delay: 0.05s;
-}
-.tag:nth-child(3) {
-  animation-delay: 0.1s;
 }
 
 /* Etat vide */
@@ -261,14 +250,11 @@ tbody tr:hover {
 .map-container {
   flex: 1 1 320px;
   min-width: 280px;
-  animation: fadeIn 0.5s ease-out both;
 }
 
 .timeline-container {
   flex: 1 1 320px;
   min-width: 280px;
-  animation: fadeIn 0.5s ease-out both;
-  animation-delay: 0.08s;
 }
 
 .map-container h3,
@@ -330,7 +316,6 @@ tbody tr:hover {
   text-align: center;
   padding: 0 2.2rem;
   z-index: 1;
-  transition: transform 0.15s ease;
 }
 
 /* Ligne gauche */
@@ -373,10 +358,6 @@ tbody tr:hover {
   border-radius: 50%;
   background: #ffffff;
   border: 4px solid #6b21a8;
-  transition:
-    transform 0.15s ease,
-    box-shadow 0.15s ease,
-    border-color 0.15s ease;
 }
 
 /* Départ / Arrivée */
@@ -399,13 +380,47 @@ tbody tr:hover {
   line-height: 1.2;
 }
 
-/* Hover sur une station */
-.timeline-stop:hover {
-  transform: translateY(-3px);
+/* ---------- Historique ---------- */
+
+.search-history {
+  margin-bottom: 0.6rem;
 }
-.timeline-stop:hover .timeline-stop-dot {
-  transform: scale(1.08);
-  box-shadow: 0 0 0 4px rgba(107, 33, 168, 0.15);
+
+.history-title {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #6b7280;
+  margin-bottom: 0.2rem;
+}
+
+.history-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.history-item {
+  border: none;
+  border-radius: 999px;
+  box-shadow: none;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.8rem;
+  background: #eef2ff;
+  color: #4338ca;
+  cursor: pointer;
+  transition:
+    background 0.12s ease,
+    transform 0.08s ease;
+}
+
+.history-item:hover {
+  background: #e0e7ff;
+  transform: translateY(-1px);
+}
+
+.history-item:active {
+  transform: translateY(0);
 }
 
 /* ---------- Responsif ---------- */
@@ -442,31 +457,9 @@ tbody tr:hover {
   }
 }
 
-/* ---------- Animations clé ---------- */
+/* ---------- Animations clé (light) ---------- */
 
 @keyframes cardIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px) scale(0.99);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(6px);
@@ -477,24 +470,14 @@ tbody tr:hover {
   }
 }
 
-@keyframes chipIn {
+@keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(4px) scale(0.96);
+    transform: translateY(6px);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes float {
-  0%,
-  100% {
     transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-4px);
   }
 }
 
@@ -504,10 +487,10 @@ tbody tr:hover {
   }
 }
 
-@keyframes shake {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-3px); }
-  50% { transform: translateX(3px); }
-  75% { transform: translateX(-2px); }
-  100% { transform: translateX(0); }
+/* Respect des utilisateurs qui réduisent les animations */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }

@@ -2,9 +2,89 @@ const form = document.getElementById("search-form");
 const numeroInput = document.getElementById("numero");
 const statusEl = document.getElementById("status");
 const resultEl = document.getElementById("result");
+const HISTORY_KEY = "trainSearchHistory";
+const HISTORY_MAX = 6;
+const historyEl = document.getElementById("search-history");
 
 let routeMap = null;
 let routeLayerGroup = null;
+
+function loadHistory() {
+  try {
+    const raw = localStorage.getItem(HISTORY_KEY);
+    if (!raw) return [];
+    const arr = JSON.parse(raw);
+    return Array.isArray(arr) ? arr : [];
+  } catch {
+    return [];
+  }
+}
+
+let history = loadHistory();
+
+function saveHistory() {
+  try {
+    localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
+  } catch {
+    // on ignore si le stockage est bloqué
+  }
+}
+
+function renderHistory() {
+  if (!historyEl) return;
+
+  if (history.length === 0) {
+    historyEl.innerHTML = "";
+    historyEl.style.display = "none";
+    return;
+  }
+
+  historyEl.style.display = "";
+  historyEl.innerHTML = `
+    <div class="history-title">Dernières recherches</div>
+    <div class="history-list">
+      ${history
+        .map(
+          (n) => `
+        <button type="button" class="history-item" data-numero="${n}">
+          ${n}
+        </button>`
+        )
+        .join("")}
+    </div>
+  `;
+
+  historyEl.querySelectorAll(".history-item").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const num = btn.dataset.numero;
+      numeroInput.value = num;
+      // on relance le submit “normal”
+      form.dispatchEvent(
+        new Event("submit", { cancelable: true, bubbles: true })
+      );
+    });
+  });
+}
+
+function addToHistory(numero) {
+  numero = numero.trim();
+  if (!numero) return;
+
+  // éviter les doublons : on enlève si déjà présent
+  history = history.filter((n) => n !== numero);
+  // ajouter en tête
+  history.unshift(numero);
+  // limiter le nombre d’entrées
+  if (history.length > HISTORY_MAX) {
+    history = history.slice(0, HISTORY_MAX);
+  }
+
+  saveHistory();
+  renderHistory();
+}
+
+// on affiche l’historique au chargement
+renderHistory();
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -37,6 +117,7 @@ form.addEventListener("submit", async (event) => {
 
     const data = await res.json();
     afficherResultats(numero, data);
+    addToHistory(numero);
     statusEl.textContent = "";
     statusEl.className = "status";
   } catch (err) {
@@ -354,3 +435,4 @@ function diffHHMMSS(start, end) {
 
   return { hours, minutes, seconds };
 }
+
