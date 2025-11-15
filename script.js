@@ -15,7 +15,7 @@ form.addEventListener("submit", async (event) => {
   }
 
   statusEl.textContent = "Recherche en cours...";
-  statusEl.className = "status";
+  statusEl.className = "status status--loading";
   resultEl.innerHTML = "";
   form.querySelector("button").disabled = true;
 
@@ -25,6 +25,12 @@ form.addEventListener("submit", async (event) => {
     );
 
     if (!res.ok) {
+      if(res.status === 404){
+        statusEl.textContent = "Aucun train trouvé pour ce numéro. Vérifiez le numéro et réessayez.";
+        statusEl.className = "status status--error";
+        return;
+      }
+
       const err = await res.json().catch(() => ({}));
       throw new Error(err.error || "Erreur API");
     }
@@ -32,11 +38,12 @@ form.addEventListener("submit", async (event) => {
     const data = await res.json();
     afficherResultats(numero, data);
     statusEl.textContent = "";
+    statusEl.className = "status";
   } catch (err) {
     console.error(err);
     statusEl.textContent =
       "Erreur lors de la récupération des données : " + err.message;
-    statusEl.className = "status error";
+    statusEl.className = "status status--error";
   } finally {
     form.querySelector("button").disabled = false;
   }
@@ -45,7 +52,7 @@ form.addEventListener("submit", async (event) => {
 function afficherResultats(numero, data) {
   if (!data.vehicle_journeys || data.vehicle_journeys.length === 0) {
     resultEl.innerHTML =
-      "<p>Aucune course trouvée pour ce numéro de train.</p>";
+      "<p>😕 Aucun train trouvé pour ce numéro. Vérifie le numéro et réessaye.</p>";
     return;
   }
 
@@ -100,7 +107,7 @@ function afficherResultats(numero, data) {
 
 
   let html = `
-    <div class="train-info">
+    <div class="train-info train-info--enter">
       <p>
         <span class="tag">Train n°${headsign}</span>
         <span class="tag">${commercialMode}</span>

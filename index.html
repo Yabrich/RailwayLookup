@@ -2,7 +2,7 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <title>Recherche de train SNCF</title>
+    <title>RailwayLookup</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="stylesheet"
@@ -18,22 +18,32 @@
     <script defer src="script.js"></script>
   </head>
   <body>
-    <div class="app">
-      <h1>Recherche de train SNCF par numéro</h1>
-      <p>Exemple : 8864, 857424, etc.</p>
+  <div class="app">
+    <header class="hero">
+      <div class="hero-icon">🚄</div>
+      <div>
+        <h1>RailwayLookup</h1>
+        <p class="hero-subtitle">
+          Entre un numéro de train pour visualiser son type, ses arrêts et son trajet sur la carte.
+        </p>
+      </div>
+    </header>
 
-      <form id="search-form">
-        <input
-          type="text"
-          id="numero"
-          placeholder="Numéro de train (ex : 8864)"
-          required
-        />
-        <button type="submit">Rechercher</button>
-      </form>
+    <form id="search-form" class="search-form">
+      <input
+        type="text"
+        id="numero"
+        placeholder="Numéro de train (ex : 8864)"
+        required
+      />
+      <button type="submit">
+        <span>Rechercher</span>
+      </button>
+    </form>
 
-      <div id="status" class="status"></div>
-      <div id="result"></div>
-    </div>
-  </body>
+    <div id="status" class="status"></div>
+    <div id="result" class="result"></div>
+  </div>
+</body>
+
 </html>
