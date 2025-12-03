@@ -143,7 +143,20 @@ function afficherResultats(numero, data) {
     routeLayerGroup = null;
   }
 
-  const vj = data.vehicle_journeys[0];
+  const todayStr = new Date().toISOString().slice(0, 10).replace(/-/g, ""); // Ex: "20251114"
+  
+  let vj = data.vehicle_journeys.find((journey) => {
+    if (!journey.calendars || !journey.calendars[0].active_periods) return false;
+    return journey.calendars[0].active_periods.some(
+      (p) => todayStr >= p.begin && todayStr <= p.end
+    );
+  });
+
+  // Fallback :
+  if (!vj) {
+     vj = data.vehicle_journeys[0];
+  }
+
   const headsign = vj.headsign || numero;
 
   let commercialMode = "Type inconnu";
@@ -164,21 +177,26 @@ function afficherResultats(numero, data) {
 
     const arrivalRaw = st.arrival_time;
     const departureRaw = st.departure_time;
-    const stopdurationRaw = (parseInt(departureRaw)-parseInt(arrivalRaw))%4000;
     
+    let stopDurationFormatted = "";
+    if (arrivalRaw && departureRaw) {
+        const diffSec = parseHHMMSS(departureRaw) - parseHHMMSS(arrivalRaw);
+        if (diffSec > 0) {
+            const mins = Math.floor(diffSec / 60);
+            stopDurationFormatted = `${mins} min`;
+        }
+    }
 
-   
+    const isDelayed = st.arrival_status === "delayed" || st.departure_status === "delayed";
+
     return {
       name: stopPoint.name || "Gare inconnue",
       arrival: formatHoraire(arrivalRaw),
       departure: formatHoraire(departureRaw),
-      stopduration: formatDuration(stopdurationRaw),
-      coord:
-        coord && coord.lat && coord.lon
-          ? {
-              lat: Number.parseFloat(coord.lat),
-              lon: Number.parseFloat(coord.lon),
-            }
+      stopduration: stopDurationFormatted,
+      isDelayed: isDelayed,
+      coord: coord && coord.lat && coord.lon
+          ? { lat: Number.parseFloat(coord.lat), lon: Number.parseFloat(coord.lon) }
           : null,
     };
   });
@@ -216,9 +234,10 @@ function afficherResultats(numero, data) {
 
     let i = 0;
     for (const stop of stops) {
+      const delayClass = stop.isDelayed ? "text-delayed" : "";
       html += `
-          <tr>
-            <td>${stop.name}</td>`;
+          <tr class="${delayClass}">
+            <td>${stop.name}${stop.isDelayed ? " ⚠️" : ""}</td>`;
       
       if(i == 0){
         html += `
@@ -436,3 +455,11 @@ function diffHHMMSS(start, end) {
   return { hours, minutes, seconds };
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const numero = urlParams.get("numero");
+  if (numero) {
+    numeroInput.value = numero;
+    form.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
+  }
+});

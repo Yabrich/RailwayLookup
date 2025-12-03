@@ -167,6 +167,11 @@ button:disabled {
 
 /* ---------- Résultat global ---------- */
 
+.text-delayed {
+  color: #dc2626;
+  font-weight: 700;
+}
+
 .result {
   margin-top: 0.25rem;
 }
