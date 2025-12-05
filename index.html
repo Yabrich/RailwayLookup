@@ -19,40 +19,69 @@
     <script defer src="script.js"></script>
   </head>
   <body>
-  <div class="app">
-    <header class="hero">
-      <div class="hero-icon">🚄</div>
-      <div>
-        <h1>RailwayLookup</h1>
-        <p class="hero-subtitle">
-          Entre un numéro de train pour visualiser son type, ses arrêts et son trajet sur la carte.
-        </p>
+    <div class="app">
+      <header class="hero">
+        <div class="hero-icon">🚄</div>
+        <div>
+          <h1>RailwayLookup</h1>
+          <p class="hero-subtitle">
+            Recherche toutes les informations sur un train depuis son numéro ou sa gare.
+          </p>
+        </div>
+      </header>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-target="search-number">Par Numéro</button>
+        <button class="tab-btn" data-target="search-station">Par Gare</button>
       </div>
-    </header>
 
-    <form id="search-form" class="search-form">
-      <div class="inputs-group">
-        <input
-          type="text"
-          id="numero"
-          placeholder="N° Train (ex : 8864)"
-          required
-        />
-        <input 
-          type="date" 
-          id="date-search" 
-          required
-        />
-      </div>
-      <button type="submit">
-        <span>Rechercher</span>
-      </button>
-    </form>
+      <form id="search-form" class="search-form">
+        <div id="search-number" class="search-group">
+          <div class="inputs-group">
+            <input
+              type="text"
+              id="numero"
+              placeholder="N° Train (ex : 8864)"
+            />
+          </div>
+        </div>
 
+        <div id="search-station" class="search-group" style="display: none;">
+          <div class="inputs-group station-inputs">
+            <div class="autocomplete-wrapper">
+              <input
+                type="text"
+                id="station-name"
+                placeholder="Nom de la gare (ex: Paris Montparnasse)"
+                autocomplete="off"
+              />
+              <input type="hidden" id="station-id" />
+              <div id="station-suggestions" class="suggestions-list"></div>
+            </div>
+            
+            <select id="board-type">
+              <option value="departures">Départs</option>
+              <option value="arrivals">Arrivées</option>
+            </select>
+            
+            <input type="time" id="time-search" />
+          </div>
+        </div>
 
-    <div id="search-history" class="search-history"></div>
-    <div id="status" class="status"></div>
-    <div id="result" class="result"></div>
-  </div>
-</body>
+        <div class="inputs-group common-inputs">
+          <input type="date" id="date-search" required />
+          <button type="submit" id="submit-btn">
+            <span>Rechercher</span>
+          </button>
+        </div>
+      </form>
+
+      <div id="search-history" class="search-history"></div>
+      <div id="status" class="status"></div>
+      
+      <div id="board-result" class="board-result"></div>
+      
+      <div id="result" class="result"></div>
+    </div>
+  </body>
 </html>

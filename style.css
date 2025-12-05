@@ -68,6 +68,14 @@ h1 {
   gap: 0.6rem;
   margin-bottom: 0.9rem;
   flex-wrap: wrap; /* Permet de passer à la ligne sur mobile */
+  align-items: center; /* Aligne verticalement tous les éléments */
+}
+
+/* Le conteneur du champ principal (Numéro ou Gare) doit prendre l'espace restant */
+.search-group {
+  flex: 1;
+  min-width: 200px; /* Évite qu'il ne s'écrase trop */
+  display: flex; /* Assure que son contenu (inputs-group) s'étire */
 }
 
 /* Groupe pour coller les inputs ensemble si besoin */
@@ -75,11 +83,14 @@ h1 {
   display: flex;
   gap: 0.6rem;
   flex: 1;
-  min-width: 280px;
+  width: 100%; /* S'assure de remplir le search-group */
 }
 
+/* Styles communs pour tous les champs de saisie */
 input[type="text"],
-input[type="date"] {
+input[type="date"],
+input[type="time"],
+select {
   padding: 0.7rem 0.9rem;
   font-size: 1rem;
   border-radius: 10px;
@@ -90,23 +101,51 @@ input[type="date"] {
     border-color 0.15s ease,
     box-shadow 0.15s ease,
     background 0.15s ease;
+  height: 48px; /* Force une hauteur identique pour tous */
+  box-sizing: border-box; /* Important pour inclure padding/border dans la hauteur */
 }
 
+/* Spécificités par type d'input */
 input[type="text"] {
-  flex: 2; /* Le numéro prend plus de place */
+  flex: 1; /* Prend tout l'espace dans son groupe */
+  width: 100%;
 }
 
 input[type="date"] {
-  flex: 1;
-  min-width: 130px;
+  flex: 0 0 auto;
+  width: 150px;
   color: #374151;
 }
 
-input:focus {
+input[type="time"] {
+  flex: 0 0 auto;
+  width: 110px;
+  color: #374151;
+}
+
+select {
+  flex: 0 0 auto;
+  width: auto;
+  min-width: 110px;
+  cursor: pointer;
+}
+
+input:focus,
+select:focus {
   outline: none;
   border-color: #2563eb;
   box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
   background: #ffffff;
+}
+
+/* Groupe spécifique pour la date et le bouton */
+.common-inputs {
+  /* margin-top supprimé pour corriger le désalignement vertical */
+  margin-top: 0; 
+  justify-content: flex-end;
+  flex: 0 0 auto; /* Ne prend que la place nécessaire (Date + Btn) */
+  min-width: auto;
+  width: auto; /* Écrase le width: 100% du .inputs-group générique */
 }
 
 button {
@@ -127,6 +166,8 @@ button {
     transform 0.1s ease,
     box-shadow 0.1s ease,
     filter 0.1s ease;
+  height: 48px; /* Hauteur alignée avec les inputs */
+  box-sizing: border-box;
 }
 
 button span::after {
@@ -441,6 +482,143 @@ tbody tr:hover {
   transform: translateY(0);
 }
 
+/* --- Navigation --- */
+
+.tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  box-shadow: none;
+  border-radius: 0;
+  transition: all 0.2s;
+}
+
+.tab-btn:hover {
+  color: #2563eb;
+  transform: none;
+  box-shadow: none;
+}
+
+.tab-btn.active {
+  color: #2563eb;
+  border-bottom-color: #2563eb;
+}
+
+/* --- Autocomplétion Gare --- */
+.autocomplete-wrapper {
+  position: relative;
+  flex: 2;
+  /* flex: 2 pour qu'il prenne plus de place que le select/heure */
+}
+
+.suggestions-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 0 0 10px 10px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+
+.suggestion-item {
+  padding: 0.6rem 0.9rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.suggestion-item:hover {
+  background: #f3f4f6;
+}
+
+/* --- Tableau des résultats (Board) --- */
+.board-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.board-table th {
+  background: #f1f5f9;
+  text-align: left;
+  padding: 0.8rem;
+  font-size: 0.9rem;
+}
+
+.board-table td {
+  padding: 0.8rem;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 0.95rem;
+}
+
+.board-row {
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.board-row:hover {
+  background-color: #eff6ff;
+}
+
+.time-cell {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.delay-badge {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  margin-left: 0.5rem;
+  font-weight: bold;
+}
+
+.mode-badge {
+  background: #e0e7ff;
+  color: #3730a3;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+}
+
+.type-badge {
+  background: #fddddd;
+  color: #c90404;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+}
+
+.station-link{
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.station-link:hover {
+  background-color: #eff6ff;
+}
+
 /* ---------- Responsif ---------- */
 
 @media (max-width: 640px) {
@@ -461,14 +639,31 @@ tbody tr:hover {
     font-size: 1.35rem;
   }
 
+  .search-form {
+    align-items: stretch; /* Sur mobile, on étire tout */
+  }
+
   .inputs-group {
     flex-wrap: wrap;
   }
+
+  .search-group {
+    min-width: 100%;
+  }
   
+  /* Sur mobile, on remet tout en pleine largeur */
   input[type="text"],
-  input[type="date"] {
+  input[type="date"],
+  input[type="time"],
+  select {
     width: 100%;
     flex: 1 1 100%;
+  }
+
+  .common-inputs {
+    width: 100%;
+    justify-content: space-between; /* Bouton et date séparés */
+    margin-top: 0.6rem; /* On remet la marge sur mobile uniquement */
   }
 
   button {
