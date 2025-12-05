@@ -23,7 +23,6 @@ body {
   box-shadow:
     0 10px 24px rgba(15, 23, 42, 0.22),
     0 0 0 1px rgba(15, 23, 42, 0.04);
-  /* ❌ pas de blur, animation d'entrée plus légère */
   animation: cardIn 0.25s ease-out both;
 }
 
@@ -47,7 +46,6 @@ body {
   font-size: 1.6rem;
   color: #f9fafb;
   box-shadow: 0 8px 18px rgba(148, 27, 186, 0.3);
-  /* ❌ pas d'animation infinie */
 }
 
 h1 {
@@ -69,22 +67,42 @@ h1 {
   display: flex;
   gap: 0.6rem;
   margin-bottom: 0.9rem;
+  flex-wrap: wrap; /* Permet de passer à la ligne sur mobile */
 }
 
-input[type="text"] {
+/* Groupe pour coller les inputs ensemble si besoin */
+.inputs-group {
+  display: flex;
+  gap: 0.6rem;
   flex: 1;
+  min-width: 280px;
+}
+
+input[type="text"],
+input[type="date"] {
   padding: 0.7rem 0.9rem;
   font-size: 1rem;
   border-radius: 10px;
   border: 1px solid #d1d5db;
   background: #f9fafb;
+  font-family: inherit;
   transition:
     border-color 0.15s ease,
     box-shadow 0.15s ease,
     background 0.15s ease;
 }
 
-input[type="text"]:focus {
+input[type="text"] {
+  flex: 2; /* Le numéro prend plus de place */
+}
+
+input[type="date"] {
+  flex: 1;
+  min-width: 130px;
+  color: #374151;
+}
+
+input:focus {
   outline: none;
   border-color: #2563eb;
   box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
@@ -146,7 +164,6 @@ button:disabled {
   gap: 0.4rem;
 }
 
-/* Spinner de chargement (seul truc animé en continu, mais très léger) */
 .status--loading::before {
   content: "";
   width: 14px;
@@ -176,19 +193,16 @@ button:disabled {
   margin-top: 0.25rem;
 }
 
-/* Container de résultats */
 .train-info {
   border-top: 1px solid #e5e7eb;
   padding-top: 1rem;
   margin-top: 0.5rem;
 }
 
-/* Animation d'entrée */
 .train-info--enter {
   animation: fadeInUp 0.5s ease-out both;
 }
 
-/* Tags d’info train */
 .tag {
   display: inline-block;
   padding: 0.25rem 0.55rem;
@@ -201,7 +215,6 @@ button:disabled {
   font-weight: 500;
 }
 
-/* Etat vide */
 .empty-state {
   margin-top: 0.6rem;
   padding: 0.8rem 1rem;
@@ -448,54 +461,36 @@ tbody tr:hover {
     font-size: 1.35rem;
   }
 
-  .search-form {
-    flex-direction: column;
+  .inputs-group {
+    flex-wrap: wrap;
+  }
+  
+  input[type="text"],
+  input[type="date"] {
+    width: 100%;
+    flex: 1 1 100%;
   }
 
   button {
     width: 100%;
     justify-content: center;
   }
-
-  .timeline-stop {
-    padding: 0 1.6rem;
-  }
 }
 
-/* ---------- Animations clé (light) ---------- */
-
 @keyframes cardIn {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+  to { transform: rotate(360deg); }
 }
 
-/* Respect des utilisateurs qui réduisent les animations */
 @media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
-  }
+  * { animation: none !important; transition: none !important; }
 }

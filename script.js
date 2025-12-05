@@ -1,5 +1,6 @@
 const form = document.getElementById("search-form");
 const numeroInput = document.getElementById("numero");
+const dateInput = document.getElementById("date-search"); // Nouvel input
 const statusEl = document.getElementById("status");
 const resultEl = document.getElementById("result");
 const HISTORY_KEY = "trainSearchHistory";
@@ -8,6 +9,17 @@ const historyEl = document.getElementById("search-history");
 
 let routeMap = null;
 let routeLayerGroup = null;
+
+// Initialiser la date à aujourd'hui par défaut
+function initDate() {
+  const today = new Date();
+  // Format YYYY-MM-DD requis pour l'input date
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+  dateInput.value = `${yyyy}-${mm}-${dd}`;
+}
+initDate();
 
 function loadHistory() {
   try {
@@ -26,7 +38,6 @@ function saveHistory() {
   try {
     localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
   } catch {
-    // on ignore si le stockage est bloqué
   }
 }
 
@@ -58,7 +69,6 @@ function renderHistory() {
     btn.addEventListener("click", () => {
       const num = btn.dataset.numero;
       numeroInput.value = num;
-      // on relance le submit “normal”
       form.dispatchEvent(
         new Event("submit", { cancelable: true, bubbles: true })
       );
@@ -70,11 +80,8 @@ function addToHistory(numero) {
   numero = numero.trim();
   if (!numero) return;
 
-  // éviter les doublons : on enlève si déjà présent
   history = history.filter((n) => n !== numero);
-  // ajouter en tête
   history.unshift(numero);
-  // limiter le nombre d’entrées
   if (history.length > HISTORY_MAX) {
     history = history.slice(0, HISTORY_MAX);
   }
@@ -83,12 +90,12 @@ function addToHistory(numero) {
   renderHistory();
 }
 
-// on affiche l’historique au chargement
 renderHistory();
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
   const numero = numeroInput.value.trim();
+  const searchDate = dateInput.value; // ex: 2025-11-14
 
   if (!numero) {
     return;
@@ -116,7 +123,7 @@ form.addEventListener("submit", async (event) => {
     }
 
     const data = await res.json();
-    afficherResultats(numero, data);
+    afficherResultats(numero, data, searchDate); // On passe la date choisie
     addToHistory(numero);
     statusEl.textContent = "";
     statusEl.className = "status";
@@ -130,7 +137,7 @@ form.addEventListener("submit", async (event) => {
   }
 });
 
-function afficherResultats(numero, data) {
+function afficherResultats(numero, data, searchDate) {
   if (!data.vehicle_journeys || data.vehicle_journeys.length === 0) {
     resultEl.innerHTML =
       "<p>😕 Aucun train trouvé pour ce numéro. Vérifie le numéro et réessaye.</p>";
@@ -143,18 +150,24 @@ function afficherResultats(numero, data) {
     routeLayerGroup = null;
   }
 
-  const todayStr = new Date().toISOString().slice(0, 10).replace(/-/g, ""); // Ex: "20251114"
+  // Conversion date input (YYYY-MM-DD) vers format API (YYYYMMDD)
+  const filterDateStr = searchDate.replace(/-/g, "");
   
   let vj = data.vehicle_journeys.find((journey) => {
     if (!journey.calendars || !journey.calendars[0].active_periods) return false;
     return journey.calendars[0].active_periods.some(
-      (p) => todayStr >= p.begin && todayStr <= p.end
+      (p) => filterDateStr >= p.begin && filterDateStr <= p.end
     );
   });
 
-  // Fallback :
   if (!vj) {
-     vj = data.vehicle_journeys[0];
+     // Si pas de train à la date précise, on prévient l'utilisateur
+     // mais on peut afficher le premier résultat par défaut ou juste une erreur.
+     // Ici, pour être clair, on affiche une erreur spécifique si la date ne matche pas.
+     resultEl.innerHTML = `<p>⚠️ Aucun train n°${numero} trouvé circulant le ${searchDate}.</p>`;
+     // On pourrait aussi fallback sur vehicle_journeys[0] si vous préférez être permissif.
+     // vj = data.vehicle_journeys[0]; 
+     return;
   }
 
   const headsign = vj.headsign || numero;
@@ -210,6 +223,7 @@ function afficherResultats(numero, data) {
       <p>
         <span class="tag">Train n°${headsign}</span>
         <span class="tag">${commercialMode}</span>
+        <span class="tag">Date : ${searchDate}</span>
         <span class="tag">${travelTime} de trajet</span>
       </p>
   `;
@@ -463,3 +477,15 @@ document.addEventListener("DOMContentLoaded", () => {
     form.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
   }
 });
+
+function initDate() {
+  const today = new Date();
+  
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+
+  dateInput.value = `${yyyy}-${mm}-${dd}`;
+}
+
+initDate();

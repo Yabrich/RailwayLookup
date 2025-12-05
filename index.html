@@ -31,12 +31,19 @@
     </header>
 
     <form id="search-form" class="search-form">
-      <input
-        type="text"
-        id="numero"
-        placeholder="Numéro de train (ex : 8864)"
-        required
-      />
+      <div class="inputs-group">
+        <input
+          type="text"
+          id="numero"
+          placeholder="N° Train (ex : 8864)"
+          required
+        />
+        <input 
+          type="date" 
+          id="date-search" 
+          required
+        />
+      </div>
       <button type="submit">
         <span>Rechercher</span>
       </button>
@@ -48,5 +55,4 @@
     <div id="result" class="result"></div>
   </div>
 </body>
-
 </html>
