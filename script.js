@@ -24,6 +24,146 @@ let routeMap = null;
 let routeLayerGroup = null;
 let currentMode = "number";
 
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function encodeNavValue(value) {
+  return encodeURIComponent(String(value ?? ""));
+}
+
+function decodeNavValue(value) {
+  try {
+    return decodeURIComponent(value || "");
+  } catch {
+    return value || "";
+  }
+}
+
+function submitSearchForm() {
+  form.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
+}
+
+function setCurrentMode(mode) {
+  currentMode = mode;
+
+  tabs.forEach((tab) => {
+    const isActive =
+      (mode === "number" && tab.dataset.target === "search-number") ||
+      (mode === "station" && tab.dataset.target === "search-station");
+    tab.classList.toggle("active", isActive);
+  });
+
+  if (currentMode === "number") {
+    sectionNumber.style.display = "";
+    sectionStation.style.display = "none";
+    resultEl.style.display = "";
+    boardResultEl.style.display = "none";
+  } else {
+    sectionNumber.style.display = "none";
+    sectionStation.style.display = "";
+    resultEl.style.display = "none";
+    boardResultEl.style.display = "";
+    boardResultEl.innerHTML = "";
+  }
+
+  renderHistory();
+}
+
+function buildTrainUrl(numero) {
+  const url = new URL(window.location.href);
+  url.search = "";
+  url.searchParams.set("numero", numero);
+  if (dateInput.value) {
+    url.searchParams.set("date", dateInput.value);
+  }
+  return url.toString();
+}
+
+function buildStationUrl(name, id) {
+  const url = new URL(window.location.href);
+  url.search = "";
+  if (id) {
+    url.searchParams.set("station_id", id);
+  }
+  if (name) {
+    url.searchParams.set("station_name", name);
+  }
+  if (dateInput.value) {
+    url.searchParams.set("date", dateInput.value);
+  }
+  if (timeInput.value) {
+    url.searchParams.set("time", timeInput.value);
+  }
+  if (boardTypeSelect.value) {
+    url.searchParams.set("board_type", boardTypeSelect.value);
+  }
+  return url.toString();
+}
+
+function openTrainDetail(numero, options = {}) {
+  if (!numero) return;
+
+  if (options.newTab) {
+    window.open(buildTrainUrl(numero), "_blank", "noopener");
+    return;
+  }
+
+  setCurrentMode("number");
+  numeroInput.value = numero;
+  submitSearchForm();
+}
+
+async function openStationDetail(name, id, options = {}) {
+  if (!name && !id) return;
+
+  if (options.newTab) {
+    window.open(buildStationUrl(name, id), "_blank", "noopener");
+    return;
+  }
+
+  setCurrentMode("station");
+  stationSuggestions.style.display = "none";
+
+  if (name) {
+    stationNameInput.value = name;
+  }
+
+  if (id) {
+    stationIdInput.value = id;
+    submitSearchForm();
+    return;
+  }
+
+  await window.searchStation(name);
+}
+
+function getNavigationRow(target) {
+  return target.closest("[data-nav-kind]");
+}
+
+function navigateFromRow(row, options = {}) {
+  if (!row) return;
+
+  if (row.dataset.navKind === "train") {
+    openTrainDetail(decodeNavValue(row.dataset.trainNumber), options);
+    return;
+  }
+
+  if (row.dataset.navKind === "station") {
+    openStationDetail(
+      decodeNavValue(row.dataset.stationName),
+      decodeNavValue(row.dataset.stationId),
+      options
+    );
+  }
+}
+
 function initDateTime() {
   const now = new Date();
   const yyyy = now.getFullYear();
@@ -244,14 +384,15 @@ function renderBoard(data, type) {
     }
 
     const trainNum = info.headsign;
+    const encodedTrainNum = encodeNavValue(trainNum);
 
     html += `
-      <tr class="board-row" onclick="viewTrainDetail('${trainNum}')">
+      <tr class="board-row" data-nav-kind="train" data-train-number="${encodedTrainNum}" role="link" tabindex="0">
         <td class="time-cell">${formattedTime} ${delayHtml}</td>
-        <td><strong>${trainNum}</strong></td>
-        <td>${info.direction}</td>
-        <td><span class="mode-badge">${info.commercial_mode}</span></td>
-        <td><span class="type-badge">${info.physical_mode}</span></td>
+        <td><strong>${escapeHtml(trainNum)}</strong></td>
+        <td>${escapeHtml(info.direction || "")}</td>
+        <td><span class="mode-badge">${escapeHtml(info.commercial_mode || "")}</span></td>
+        <td><span class="type-badge">${escapeHtml(info.physical_mode || "")}</span></td>
       </tr>
     `;
   });
@@ -279,16 +420,19 @@ function formatDateTimeAPI(str) {
 }
 
 window.viewTrainDetail = (numero) => {
-    tabs[0].click();
-    numeroInput.value = numero;
-    form.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
+    openTrainDetail(numero);
 };
 
-window.searchStation = async (stationName) => {
-    tabs[1].click();
-    
+window.searchStation = async (stationName, stationId = "") => {
+    setCurrentMode("station");
     stationNameInput.value = stationName;
+    stationIdInput.value = stationId;
     stationSuggestions.style.display = "none";
+
+    if (stationId) {
+        submitSearchForm();
+        return;
+    }
     
     statusEl.textContent = "Recherche de la gare...";
     statusEl.className = "status status--loading";
@@ -417,6 +561,12 @@ function getStationBaseId(fullId) {
   return parts.length >= 3 ? parts[2] : fullId;
 }
 
+function getStopAreaId(fullId) {
+  const baseId = getStationBaseId(fullId);
+  if (!baseId) return "";
+  return `stop_area:SNCF:${baseId}`;
+}
+
 // Initial render
 renderHistory();
 
@@ -479,6 +629,8 @@ function afficherResultats(numero, data, searchDate) {
 
     return {
       name: stopPoint.name || "Gare inconnue",
+      label: stopPoint.label || stopPoint.name || "Gare inconnue",
+      id: getStopAreaId(stopPoint.id || ""),
       arrival: formatHoraire(arrivalRaw),
       departure: formatHoraire(departureRaw),
       stopduration: stopDurationFormatted,
@@ -522,13 +674,13 @@ function afficherResultats(numero, data, searchDate) {
 
     let i = 0;
     for (const stop of stops) {
+      const encodedStationName = encodeNavValue(stop.label || stop.name);
+      const encodedStationId = encodeNavValue(stop.id);
 
       html += `
-          <tr>
+          <tr class="station-row" data-nav-kind="station" data-station-name="${encodedStationName}" data-station-id="${encodedStationId}" role="link" tabindex="0">
             <td>
-                <a class="station-link" onclick="searchStation('${stop.name.replace(/'/g, "\\'")}')">
-                    ${stop.name}
-                </a>
+                <span class="station-link">${escapeHtml(stop.name)}</span>
             </td>`;
       
       if(i == 0){
@@ -694,10 +846,71 @@ function diffHHMMSS(start, end) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("mousedown", (event) => {
+    if (event.button !== 1) return;
+    if (getNavigationRow(event.target)) {
+      event.preventDefault();
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    const row = getNavigationRow(event.target);
+    if (!row) return;
+
+    event.preventDefault();
+    navigateFromRow(row, { newTab: event.ctrlKey || event.metaKey });
+  });
+
+  document.addEventListener("auxclick", (event) => {
+    if (event.button !== 1) return;
+
+    const row = getNavigationRow(event.target);
+    if (!row) return;
+
+    event.preventDefault();
+    navigateFromRow(row, { newTab: true });
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+
+    const row = getNavigationRow(event.target);
+    if (!row) return;
+
+    event.preventDefault();
+    navigateFromRow(row);
+  });
+
   const urlParams = new URLSearchParams(window.location.search);
   const numero = urlParams.get("numero");
+  const stationId = urlParams.get("station_id");
+  const stationName = urlParams.get("station_name");
+  const date = urlParams.get("date");
+  const time = urlParams.get("time");
+  const boardType = urlParams.get("board_type");
+
+  if (date) {
+    dateInput.value = date;
+  }
+
+  if (time) {
+    timeInput.value = time;
+  }
+
+  if (boardType) {
+    boardTypeSelect.value = boardType;
+  }
+
   if (numero) {
-    numeroInput.value = numero;
-    form.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
+    openTrainDetail(numero);
+    return;
+  }
+
+  if (stationId || stationName) {
+    if (stationId) {
+      openStationDetail(stationName || "", stationId);
+    } else {
+      window.searchStation(stationName || "");
+    }
   }
 });
